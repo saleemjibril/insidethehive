@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "base/reset";
+
+@import "utils/variables";
+
+@import "base/fonts";
+@import "base/global";
+
+@import "shared/typography";
+@import "shared/fields";
+@import "shared/svgs";
+@import "shared/buttons";
+
+@import 'components/header';
+@import 'components/testimonials';
+@import 'components/popularEpisodes';
+@import 'components/latestEpisode';
+@import 'components/spotifyComponent';
+@import 'components/player';
+@import 'components/episodes';
+
+
+
+@import "pages/home";
+
+
+
+
+
+
+
+
