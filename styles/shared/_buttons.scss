@@ -1,10 +1,70 @@
-
-%primary-button {
-  width: 100%;
+.outlined-button, %outlined-button {
+  width: fit-content;
+  padding: 0 20px;
+  white-space: nowrap;
   height: 50px;
-  background: #2D8E95;
-  font-weight: 500;
-  color: #FFF;
-  border: none;
   border-radius: 24px;
+  font-family: 16px;
+  font-weight: 500;
+  border: 1px solid #fff;
+  background: none;
+  color: $text-color;
+  color: #fff;
+}
+
+
+
+%midButton--filled {
+  width: 26.4rem;
+  height: 4.4rem;
+  background-color: $secondary-color;
+  border-radius: 20px;
+  color: #fff;
+  border: none;
+  outline: none;
+  font-size: 1.4rem;
+  transition: 0.4s;
+
+  &:hover {
+    border: 1px solid $secondary-color;
+    background: transparent;
+    color: $secondary-color;
+  }
+}
+
+%midButton--trans {
+  width: 26.4rem;
+  height: 4.4rem;
+  border-radius: 20px;
+  color: $secondary-color;
+  border: 1px solid $secondary-color;
+  outline: none;
+  font-size: 1.4rem;
+  transition: 0.4s;
+
+  &:hover {
+    border: none;
+    background-color: $secondary-color;
+    color: #fff;
+  }
+}
+
+.button-gray,
+%button-gray {
+  min-width: 150px;
+  height: 40px;
+  border-radius: 24px;
+  background: #f9fafa;
+  border: 1px solid #eaebea;
+  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
+  outline: none;
+  color: #acafac;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }

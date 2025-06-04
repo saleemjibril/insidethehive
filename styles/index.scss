@@ -20,11 +20,19 @@
 @import 'components/spotifyComponent';
 @import 'components/player';
 @import 'components/episodes';
+@import 'components/listenOn';
+@import 'components/admin/sidebar';
+@import 'components/admin/socialLinks';
+
 
 
 
 @import "pages/home";
-
+@import "pages/season";
+@import 'pages/episode';
+@import 'pages/admin/list';
+@import 'pages/admin/form';
+@import 'pages/admin/login';
 
 
 

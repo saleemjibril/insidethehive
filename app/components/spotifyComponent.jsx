@@ -1,9 +1,9 @@
-export default function SpotifyComponent(params) {
+export default function SpotifyComponent({title = true}) {
     return (
         <div className="spotify-component">
-<div className="spotify-component__title">
+{title && <div className="spotify-component__title">
     Listen on <span>Spotify!</span>
-</div>
+</div>}
         <iframe 
   style={{ borderRadius: "12px"}}
   src="https://open.spotify.com/embed/episode/2LED1ovU0J44roNtRft0xX?utm_source=generator&theme=0" 

@@ -1,0 +1,37 @@
+.season {
+    &__title-group {
+        width: 100%;
+        max-width: 1192px;
+        padding: 0 20px;
+        margin: 0 auto;
+        margin-bottom: 200px;
+        margin-top: 200px;
+
+        display: flex;
+        align-items: center;
+        gap: 80px;
+
+
+        &__title {
+            font-size: 72px;
+            font-weight: 700;
+            width: 100%;
+            max-width: 20ch;
+            text-align: center;
+            font-family: var(--font-durkwide);
+
+            & > span {
+                // color: $secondary-color;
+                color: $secondary-color;
+              }
+            
+        }
+
+        &__img {
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            border: 1px solid $secondary-color;
+        }
+    }
+}

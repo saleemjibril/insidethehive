@@ -1,7 +1,9 @@
 import AllEpisodes from "./components/allEpisodes";
 import LatestEpisode from "./components/latestEpisode";
+import ListenOn from "./components/listenOn";
 import Player from "./components/player";
 import PopularEpisodes from "./components/popularEpisodes";
+import SpotifyPodcast from "./components/spotify";
 import SpotifyComponent from "./components/spotifyComponent";
 import Testimonials from "./components/testimonials";
 
@@ -18,10 +20,12 @@ export async function generateMetadata() {
 export default function Home() {
   return (
     <>
+    <SpotifyPodcast />
     <LatestEpisode />
     <PopularEpisodes />
     <SpotifyComponent />
     <Player />
+    <ListenOn />
     <Testimonials />
     <AllEpisodes />
     </>

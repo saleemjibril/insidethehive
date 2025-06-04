@@ -46,6 +46,10 @@
   font-size: 32px;
   font-weight: 700;
 }
+%title-30 {
+  font-size: 30px;
+  font-weight: 700;
+}
 
 %title-24 {
   font-size: 24px;
@@ -58,12 +62,7 @@
 
 %title-18 {
   font-size: 18px;
-  font-weight: 500;
   line-height: 140%;
-
-  @media (max-width: 565px) {
-    font-size: 16px;
-  }
 }
 %title-16 {
   font-size: 16px;

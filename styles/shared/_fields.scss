@@ -1,48 +1,43 @@
-label {
-    display: block;
-    font-size: 1.6rem;
-    font-weight: 500;
-    width: 100%;
-    color: rgba(36, 35, 35, 1);
-    margin-bottom: 6px;
+%primary-input {
+  width: 100%;
+    border: none;
+    outline: none;
+    background: none;
+    border: 1px solid #fff;
+    height: 50px;
+    border-radius: 8px;
+    padding-left: 10px;
+    color: $text-color;
+    font-size: 16px;
 }
 
+%normal-input {
+width: 100%;
+border: none;
+outline: none;
+background-color: #f0f0f0;
+height: 50px;
+border-radius: 7px;
+padding: 5px;
+margin-top: 10px;
+font-size: 16px;
 
-input {
-  accent-color: #028C4B;
 }
 
-textarea {
-  padding-top: 12px
-}
-
-
-
-%input {
-    width: 100%;
-  max-width: 400px;
-  height: 40px;
-  border-radius: var(--radius-md, 8px);
-  border: 1px solid var(--Colors-Border-border-primary, #adb0ab);
-  background: var(--Colors-Background-bg-primary, #FFF);
-  box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
-  padding-left: 12px;
-  font-size: 1.6rem;
-  color: #232423;
-  
-  &::placeholder {
-    color: #ACAFAC;
-  }
-
- 
-}
-
-%otp-input {
-  
+%normal-textarea {
+width: 100%;
+border: none;
+outline: none;
+height: 180px !important;
+background-color: #f0f0f0;
+height: 50px;
+border-radius: 7px;
+padding: 5px;
+font-size: 16px;
 
 }
 
 
-%otp-input-italics::placeholder {
-
+%normal-label {
+font-size: 16px;
 }

@@ -1,0 +1,48 @@
+.listen-on {
+    width: 100%;
+    max-width: 1440px;
+    padding: 0 20px;
+    margin: 0 auto;
+    margin-bottom: 200px;
+    margin-top: 200px;
+    &__title {
+        @extend %title-48;
+        font-family: var(--font-durkwide);
+        margin-bottom: 20px;
+    }
+    &__cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 20px;
+
+        & > div {
+            width: 100%;
+            height: fit-content;
+            border-radius: 8px;
+            background: rgb(122, 122, 39);
+            padding: 20px;
+
+            & > img {
+                margin-bottom: 10px;
+            }
+
+            & > div {
+                @extend %title-18;
+                font-weight: 600;
+            }
+        }
+
+        & >:first-child {
+            background: #CE1312;
+        }
+        & >:nth-child(2) {
+            background: #1eba55;
+        }
+        & >:nth-child(3) {
+            background: #d56dfb;
+        }
+        & >:nth-child(4) {
+            background: #ff7a3f;
+        }
+    }
+}

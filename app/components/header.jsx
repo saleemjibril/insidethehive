@@ -8,7 +8,10 @@ export default function Header() {
     <>
       <header className="header">
         <div className="header__logo">
-          Inside<span>TheHive</span>
+          <Image src={"/assets/icons/logo-trans.svg"} width={100} height={100} />
+          <div>
+          {/* Inside<span>TheHive</span> */}
+          </div>
         </div>
 
         <nav>

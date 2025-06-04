@@ -39,7 +39,7 @@
           }
       
           & > span {
-            color: #FF0000;
+            color: $secondary-color;
           }
         }
       
@@ -132,7 +132,7 @@
           // animation-play-state: paused;
 
           & > :nth-child(odd) {
-            background: #FF0000;
+            background: $secondary-color;
             border: none;
 
           }
@@ -152,7 +152,7 @@
 
           
           & > :nth-child(odd) {
-            background: #FF0000;
+            background: $secondary-color;
             border: none;
 
           }
