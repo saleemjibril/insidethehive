@@ -2,6 +2,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from "next/image";
 
 export default function SpotifyPodcast({ 
   clientId,
@@ -17,11 +18,16 @@ export default function SpotifyPodcast({
   
   // Filter states
   const [keyword, setKeyword] = useState(initialKeyword);
+  const [selectedTag, setSelectedTag] = useState('');
+  const [sortOrder, setSortOrder] = useState('desc'); // 'asc' or 'desc'
   
   // Pagination states
   const [offset, setOffset] = useState(0);
   const [hasMore, setHasMore] = useState(true);
   const [totalEpisodes, setTotalEpisodes] = useState(0);
+
+  // Predefined tags/categories (you can customize these)
+  const availableTags = ['DeFi', 'NFTs', 'Ethereum', 'Investing', 'Regulation', 'Bitcoin', 'Vitalik'];
 
   // Get Spotify Access Token
   useEffect(() => {
@@ -57,7 +63,7 @@ export default function SpotifyPodcast({
     if (!token) return;
     
     fetchEpisodes();
-  }, [token, showId, maxResults, offset, keyword]);
+  }, [token, showId, maxResults, offset]);
 
   const fetchEpisodes = async () => {
     try {
@@ -79,16 +85,7 @@ export default function SpotifyPodcast({
       
       const data = await response.json();
       
-      // Filter by keyword if provided
-      let filteredEpisodes = data.items;
-      if (keyword) {
-        filteredEpisodes = filteredEpisodes.filter(episode => 
-          episode.name.toLowerCase().includes(keyword.toLowerCase()) || 
-          episode.description.toLowerCase().includes(keyword.toLowerCase())
-        );
-      }
-      
-      setEpisodes(filteredEpisodes);
+      setEpisodes(data.items);
       setTotalEpisodes(data.total);
       setHasMore(data.next !== null);
     } catch (err) {
@@ -99,10 +96,43 @@ export default function SpotifyPodcast({
     }
   };
 
-  const handleFilterSubmit = (e) => {
-    e.preventDefault();
-    // Reset pagination when applying new filters
-    setOffset(0);
+  // Filter episodes based on keyword and selected tag
+  const getFilteredAndSortedEpisodes = () => {
+    let filtered = episodes;
+    
+    // Filter by keyword
+    if (keyword) {
+      filtered = filtered.filter(episode => 
+        episode.name.toLowerCase().includes(keyword.toLowerCase()) || 
+        episode.description.toLowerCase().includes(keyword.toLowerCase())
+      );
+    }
+    
+    // Filter by tag (searching in title and description)
+    if (selectedTag) {
+      filtered = filtered.filter(episode => 
+        episode.name.toLowerCase().includes(selectedTag.toLowerCase()) || 
+        episode.description.toLowerCase().includes(selectedTag.toLowerCase())
+      );
+    }
+    
+    // Sort episodes
+    filtered.sort((a, b) => {
+      const dateA = new Date(a.release_date);
+      const dateB = new Date(b.release_date);
+      return sortOrder === 'desc' ? dateB - dateA : dateA - dateB;
+    });
+    
+    return filtered;
+  };
+
+  const toggleSort = () => {
+    setSortOrder(sortOrder === 'desc' ? 'asc' : 'desc');
+  };
+
+  const handleTagClick = (tag) => {
+    setSelectedTag(selectedTag === tag ? '' : tag);
+    setOffset(0); // Reset pagination when changing filters
   };
 
   const goToNextPage = () => {
@@ -115,100 +145,196 @@ export default function SpotifyPodcast({
     window.scrollTo(0, 0);
   };
 
+  // Helper function to extract tags from episode content
+  const getEpisodeTags = (episode) => {
+    const content = `${episode.name} ${episode.description}`.toLowerCase();
+    return availableTags.filter(tag => 
+      content.includes(tag.toLowerCase())
+    );
+  };
+
+  // Helper function to format duration
+  const formatDuration = (durationMs) => {
+    const minutes = Math.floor(durationMs / 60000);
+    const hours = Math.floor(minutes / 60);
+    if (hours > 0) {
+      return `${hours}h ${minutes % 60}m`;
+    }
+    return `${minutes}m`;
+  };
+
   if (loading && !episodes.length) return <div>Loading podcast episodes...</div>;
   if (error) return <div>Error loading podcast: {error}</div>;
 
-  return (
-    <div>
-      {/* Filter Form */}
-      <form onSubmit={handleFilterSubmit} className="mb-6 p-4 bg-gray-100 rounded">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label htmlFor="keyword" className="block text-sm font-medium text-gray-700 mb-1">
-              Search Episodes
-            </label>
-            <input
-              type="text"
-              id="keyword"
-              value={keyword}
-              onChange={(e) => setKeyword(e.target.value)}
-              className="w-full p-2 border rounded"
-              placeholder="Search episodes..."
-            />
-          </div>
-          
-          <div className="flex items-end">
-            <button
-              type="submit"
-              className="w-full p-2 bg-green-600 text-white rounded hover:bg-green-700"
-            >
-              Apply Filter
-            </button>
-          </div>
-        </div>
-      </form>
+  const filteredEpisodes = getFilteredAndSortedEpisodes();
 
-      {/* Episodes List */}
-      {episodes.length === 0 ? (
-        <div className="text-center py-8">No episodes found matching your filters.</div>
-      ) : (
-        <>
-          <div className="grid grid-cols-1 gap-6">
-            {episodes.map((episode) => (
-              <div key={episode.id} className="episode-item border rounded overflow-hidden shadow p-4">
-                <div className="flex flex-col md:flex-row">
-                  <div className="md:w-1/4 mb-4 md:mb-0 md:mr-4">
-                    <img 
-                      src={episode.images[0]?.url || '/api/placeholder/300/300'} 
-                      alt={episode.name}
-                      className="w-full rounded"
-                    />
+  return (
+    <div className="episodes">
+      <div className="episodes__title-group">
+        <div>Browse All Episodes</div>
+        <div onClick={toggleSort} style={{ cursor: 'pointer' }}>
+          Sort
+          <Image 
+            width={20} 
+            height={20} 
+            src="/assets/icons/upDown.svg" 
+            alt="Sort"
+            style={{ 
+              transform: sortOrder === 'asc' ? 'rotate(180deg)' : 'rotate(0deg)',
+              transition: 'transform 0.2s ease'
+            }}
+          />
+        </div>
+      </div>
+
+      {/* Search Input */}
+      <div className="episodes__search" style={{ marginBottom: '20px' }}>
+        <input
+          type="text"
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+          placeholder="Search episodes..."
+          style={{
+            width: '100%',
+            padding: '10px',
+            border: '1px solid #ccc',
+            borderRadius: '5px',
+            fontSize: '16px'
+          }}
+        />
+      </div>
+
+      <div className="episodes__filters">
+        <div className="episodes__filters__title">Filters:</div>
+        <div className="episodes__filters__group">
+          {availableTags.map(tag => (
+            <div 
+              key={tag}
+              onClick={() => handleTagClick(tag)}
+              style={{
+                cursor: 'pointer',
+                backgroundColor: selectedTag === tag ? '#007bff' : 'transparent',
+                color: selectedTag === tag ? 'white' : 'inherit',
+                padding: '5px 10px',
+                borderRadius: '15px',
+                border: selectedTag === tag ? 'none' : '1px solid #ccc'
+              }}
+            >
+              {tag}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="episodes__cards">
+        {filteredEpisodes.length === 0 ? (
+          <div style={{ textAlign: 'center', padding: '40px' }}>
+            No episodes found matching your filters.
+          </div>
+        ) : (
+          filteredEpisodes.map((episode, index) => {
+            const episodeTags = getEpisodeTags(episode);
+            return (
+              <div key={episode.id} className="episodes__cards__card">
+                <div className="episodes__cards__card__inner">
+                  <div className="episodes__cards__card__inner__details">
+                    <div className="episodes__cards__card__inner__details__title">
+                      {episode.name}
+                    </div>
+                    <div className="episodes__cards__card__inner__details__subtitle">
+                      {episode.description.length > 200 
+                        ? `${episode.description.substring(0, 200)}...` 
+                        : episode.description
+                      }
+                    </div>
+                    <div className="episodes__cards__card__inner__details__tags">
+                      {episodeTags.map(tag => (
+                        <div key={tag}>{tag}</div>
+                      ))}
+                      {episodeTags.length === 0 && <div>Podcast</div>}
+                    </div>
                   </div>
-                  <div className="md:w-3/4">
-                    <h3 className="text-xl font-medium mb-2">{episode.name}</h3>
-                    <p className="text-sm text-gray-600 mb-3">
-                      {new Date(episode.release_date).toLocaleDateString()} • {Math.floor(episode.duration_ms / 60000)} min
-                    </p>
-                    <p className="text-gray-700 mb-4 line-clamp-3">{episode.description}</p>
-                    
-                    <iframe 
-                      src={`https://open.spotify.com/embed/episode/${episode.id}`}
-                      width="100%" 
-                      height="152" 
-                      frameBorder="0" 
-                      allowTransparency="true" 
-                      allow="encrypted-media"
-                      className="rounded"
-                    ></iframe>
+
+                  <div className="episodes__cards__card__inner__preview">
+                    <div className="episodes__cards__card__inner__preview__image">
+                      <Image
+                        objectFit="cover"
+                        layout="fill"
+                        alt=""
+                        src={episode.images[0]?.url || "/assets/podcast-placeholder.jpg"}
+                        // alt={episode.name}
+                      />
+                    </div>
+
+                    <div className="episodes__cards__card__inner__preview__group">
+                      <div>{new Date(episode.release_date).toLocaleDateString()}</div>
+                      <div>{formatDuration(episode.duration_ms)}</div>
+                    </div>
+
+                    {/* Spotify Embed */}
+                    <div style={{ marginTop: '10px', width: '100%' }}>
+                      <iframe 
+                        src={`https://open.spotify.com/embed/episode/${episode.id}?utm_source=generator&theme=0`}
+                        width="100%" 
+                        height="152" 
+                        frameBorder="0" 
+                        allowfullscreen="" 
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                        loading="lazy"
+                        style={{ borderRadius: '12px' }}
+                      ></iframe>
+                    </div>
                   </div>
                 </div>
               </div>
-            ))}
+            );
+          })
+        )}
+      </div>
+
+      {/* Pagination Controls */}
+      {episodes.length > 0 && (
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'space-between', 
+          alignItems: 'center',
+          marginTop: '40px',
+          padding: '20px 0'
+        }}>
+          <button 
+            onClick={goToPrevPage} 
+            disabled={offset === 0}
+            style={{
+              padding: '10px 20px',
+              borderRadius: '5px',
+              border: 'none',
+              backgroundColor: offset === 0 ? '#ccc' : '#007bff',
+              color: 'white',
+              cursor: offset === 0 ? 'not-allowed' : 'pointer'
+            }}
+          >
+            Previous Page
+          </button>
+          
+          <div style={{ color: '#666' }}>
+            Showing {Math.min(offset + 1, totalEpisodes)} - {Math.min(offset + episodes.length, totalEpisodes)} of {totalEpisodes}
           </div>
           
-          {/* Pagination Controls */}
-          <div className="flex justify-between mt-8">
-            <button 
-              onClick={goToPrevPage} 
-              disabled={offset === 0}
-              className={`px-4 py-2 rounded ${offset === 0 ? 'bg-gray-300 cursor-not-allowed' : 'bg-green-600 text-white hover:bg-green-700'}`}
-            >
-              Previous Page
-            </button>
-            
-            <div className="text-center text-gray-600">
-              Showing {offset + 1} - {Math.min(offset + episodes.length, totalEpisodes)} of {totalEpisodes}
-            </div>
-            
-            <button 
-              onClick={goToNextPage} 
-              disabled={!hasMore}
-              className={`px-4 py-2 rounded ${!hasMore ? 'bg-gray-300 cursor-not-allowed' : 'bg-green-600 text-white hover:bg-green-700'}`}
-            >
-              Next Page
-            </button>
-          </div>
-        </>
+          <button 
+            onClick={goToNextPage} 
+            disabled={!hasMore}
+            style={{
+              padding: '10px 20px',
+              borderRadius: '5px',
+              border: 'none',
+              backgroundColor: !hasMore ? '#ccc' : '#007bff',
+              color: 'white',
+              cursor: !hasMore ? 'not-allowed' : 'pointer'
+            }}
+          >
+            Next Page
+          </button>
+        </div>
       )}
     </div>
   );

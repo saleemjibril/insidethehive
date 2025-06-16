@@ -161,7 +161,7 @@ export default function GameVideos() {
             <div onMouseOver={() => setSelectedVideo(video)} key={index}>
               {/* <div className="game-video__inner__previews__title">{video?.title}</div> */}
               <div className="game-video__inner__previews__image">
-                <Image src={video?.image?.url} alt="" objectFit="cover" layout="fill" />
+                <Image alt="" src={video?.image?.url} alt="" objectFit="cover" layout="fill" />
               </div>
               <svg
                 viewBox="-0.5 0 7 7"

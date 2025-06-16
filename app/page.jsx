@@ -20,14 +20,26 @@ export async function generateMetadata() {
 export default function Home() {
   return (
     <>
-    <SpotifyPodcast />
+    {/* <SpotifyPodcast 
+    clientId={"34a81146217d4ccaa855f8e53f8163ac"}
+    clientSecret={"90750daa64184a31bf03e6ac2426b3bd"}
+    showId={"0wOOX8mdQUoRP1adnxV9VD"}
+    /> */}
     <LatestEpisode />
-    <PopularEpisodes />
+    <PopularEpisodes
+    clientId={"34a81146217d4ccaa855f8e53f8163ac"}
+    clientSecret={"90750daa64184a31bf03e6ac2426b3bd"}
+    showId={"0wOOX8mdQUoRP1adnxV9VD"}
+    />
     <SpotifyComponent />
     <Player />
     <ListenOn />
     <Testimonials />
-    <AllEpisodes />
+    <AllEpisodes
+     clientId={"34a81146217d4ccaa855f8e53f8163ac"}
+    clientSecret={"90750daa64184a31bf03e6ac2426b3bd"}
+    showId={"0wOOX8mdQUoRP1adnxV9VD"}
+    />
     </>
   );
 }

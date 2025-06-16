@@ -10,6 +10,7 @@ export default function Episode() {
           width={20}
           height={15}
           src="/assets/icons/navigatorSeperator.svg"
+          alt=""
         />
         <div>Welcome to InsideTheHive!</div>
       </div>
@@ -20,6 +21,7 @@ export default function Episode() {
           height={272.5}
           src="/assets/podcast1.jpg"
           className="season__title-group__img"
+          alt=""
         />
         <div className="episode__inner__inner">
           <div className="episode__inner__inner__title">
@@ -36,10 +38,10 @@ export default function Episode() {
             Available on all streaming platforms <br /> Listen and subscribe!
           </div>
           <div className="latest-episode__icons">
-            <Image width={40} height={40} src="/assets/icons/youtube.svg" />
-            <Image width={40} height={40} src="/assets/icons/spotify.svg" />
-            <Image width={35} height={38} src="/assets/icons/castBox.png" />
-            <Image width={45} height={25} src="/assets/icons/soundclouds.png" />
+            <Image width={40} height={40} alt="" src="/assets/icons/youtube.svg" />
+            <Image width={40} height={40} alt="" src="/assets/icons/spotify.svg" />
+            <Image width={35} height={38} alt="" src="/assets/icons/castBox.png" />
+            <Image width={45} height={25} alt="" src="/assets/icons/soundclouds.png" />
             <Image
               width={40}
               height={40}

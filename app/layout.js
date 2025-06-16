@@ -47,7 +47,7 @@ export default function RootLayout({ children }) {
        ${syne.variable} ${inter.variable} ${geist.variable} ${durkWide.variable} ${silkFlower.variable}`}
     >
       <body>
-        {/* <Header /> */}
+        <Header />
         <ReduxProvider>{children}</ReduxProvider>
       </body>
     </html>

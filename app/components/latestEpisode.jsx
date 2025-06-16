@@ -11,16 +11,16 @@ export default function LatestEpisode() {
         </div>
 
 <div className="latest-episode__icons">
-    <Image width={40} height={40} src="/assets/icons/youtube.svg" />
-    <Image width={40} height={40} src="/assets/icons/spotify.svg" />
-    <Image width={35} height={38} src="/assets/icons/castBox.png" />
-    <Image width={45} height={25} src="/assets/icons/soundclouds.png" />
-    <Image width={40} height={40} src="/assets/icons/applePodcast.svg" />
+    <Image width={40} height={40} alt="" src="/assets/icons/youtube.svg" />
+    <Image width={40} height={40} alt="" src="/assets/icons/spotify.svg" />
+    <Image width={35} height={38} alt="" src="/assets/icons/castBox.png" />
+    <Image width={45} height={25} alt="" src="/assets/icons/soundclouds.png" />
+    <Image width={40} height={40} alt="" src="/assets/icons/applePodcast.svg" />
 </div>
         <div className="latest-episode__card">
             
                         <div className="latest-episode__card__image">
-                        <Image objectFit="cover" layout="fill" src="/assets/podcast2.jpg" alt="" />
+                        <Image objectFit="cover" layout="fill" src="https://i.scdn.co/image/ab6765630000ba8a27354e81d74b3dba7b846e03" alt="" />
                         </div>
             
                         <div className="latest-episode__card__group">

@@ -134,6 +134,12 @@
 
           & > :nth-child(odd) {
             background: $secondary-color;
+            color: #000;
+            font-weight: 500;
+
+            .testimonials__slider__card__profile__subtitle {
+              color: #000;
+            }
 
           }
 
@@ -154,6 +160,12 @@
           & > :nth-child(odd) {
             background: $secondary-color;
 
+            color: #000;
+            font-weight: 500;
+
+            .testimonials__slider__card__profile__subtitle {
+              color: #000;
+            }
           }
 
           @keyframes marqueeXRight {

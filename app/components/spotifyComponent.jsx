@@ -6,7 +6,7 @@ export default function SpotifyComponent({title = true}) {
 </div>}
         <iframe 
   style={{ borderRadius: "12px"}}
-  src="https://open.spotify.com/embed/episode/2LED1ovU0J44roNtRft0xX?utm_source=generator&theme=0" 
+  src="https://open.spotify.com/embed/episode/5WaEASEPn4hUtfL5amzSzG?utm_source=generator&theme=0" 
   width="100%" 
   height="352" 
   frameBorder="0" 
