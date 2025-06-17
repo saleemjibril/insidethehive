@@ -277,7 +277,7 @@ export default function AllEpisodes({
   const { episodes: paginatedEpisodes, totalCount, totalPages } = getPaginatedEpisodes();
 
   return (
-    <div className="episodes">
+    <div className="episodes" id='all'>
       <div className="episodes__title-group">
         <div>Browse All Episodes ({totalCount} {totalCount === 1 ? 'episode' : 'episodes'})</div>
         <div onClick={toggleSort} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '5px' }}>

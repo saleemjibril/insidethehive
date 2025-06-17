@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function LatestEpisode() {
     return (
-        <div className="latest-episode">
+        <div className="latest-episode" id="latest">
         <div className="latest-episode__title">
             Watch Our <span>Latest Episode</span>
         </div>
@@ -20,7 +20,7 @@ export default function LatestEpisode() {
         <div className="latest-episode__card">
             
                         <div className="latest-episode__card__image">
-                        <Image objectFit="cover" layout="fill" src="https://i.scdn.co/image/ab6765630000ba8a27354e81d74b3dba7b846e03" alt="" />
+                        <Image width={1400} height={400} src="https://i.scdn.co/image/ab6765630000ba8a27354e81d74b3dba7b846e03" alt="" />
                         </div>
             
                         <div className="latest-episode__card__group">

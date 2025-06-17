@@ -35,6 +35,7 @@ export default function Home() {
     <Player />
     <ListenOn />
     <Testimonials />
+    
     <AllEpisodes
      clientId={"34a81146217d4ccaa855f8e53f8163ac"}
     clientSecret={"90750daa64184a31bf03e6ac2426b3bd"}

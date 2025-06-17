@@ -13,6 +13,12 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
+    
+        @media (max-width: $tablet) {
+              flex-direction: column;
+              align-items: start;
+              gap: 14px;
+            }
 
     & > :first-child {
       @extend %title-32;
@@ -40,6 +46,13 @@
     gap: 20px;
     border-top: 1px solid #2f2e2e;
     border-bottom: 1px solid #2f2e2e;
+
+        @media (max-width: $tablet) {
+              flex-direction: column;
+              align-items: start;
+              gap: 14px;
+            }
+
 
     &__title {
       // @extend %title-24;
@@ -85,6 +98,14 @@
         align-items: center;
         border-bottom: 1px solid #2f2e2e;
         padding: 20px;
+
+         @media (max-width: $tablet) {
+              flex-direction: column;
+              align-items: start;
+              gap: 18px;
+            }
+
+
         &__details {
           &__title {
             @extend %title-24;

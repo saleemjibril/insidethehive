@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 export default function Header() {
@@ -7,21 +8,21 @@ export default function Header() {
   return (
     <>
       <header className="header">
-        <div className="header__logo">
+        <Link href="/" prefetch={true} className="header__logo">
           <Image alt="" src={"/assets/icons/logo-trans.svg"} width={100} height={100} />
           <div>
           {/* Inside<span>TheHive</span> */}
           </div>
-        </div>
+        </Link>
 
         <nav>
-          <a href="#how">Latest Episodes</a>
-          <a href="#how">About</a>
-          <a href="#how">Events</a>
+          <a href="#latest">Latest Episode</a>
+          <a href="#popular">Popular Episodes</a>
+          <a href="#all">All Episodes</a>
         </nav>
 
         <div className="header__buttons">
-          <button className="header__buttons__login">Contact us</button>
+          <button className="header__buttons__login"></button>
           <button className="header__buttons__signup">NewsLetter</button>
         </div>
         <Image
@@ -48,32 +49,32 @@ export default function Header() {
           <div className="header__sidebar__links">
             <a
               className="header__sidebar__link"
-              href="#how"
+              href="#latest"
               onClick={() => setOpen(false)}
             >
-              What we do
+              Latest Episode
             </a>
             <a
               className="header__sidebar__link"
-              href="#how"
+              href="#popular"
               onClick={() => setOpen(false)}
             >
-              How it works
+              Popular Episodes
             </a>
             <a
               className="header__sidebar__link"
-              href=""
+              href="#all"
               onClick={() => setOpen(false)}
             >
-              Start for free
+             All Episodes
             </a>
           </div>
-          <div className="header__sidebar__buttons">
+          {/* <div className="header__sidebar__buttons">
             <button className="header__sidebar__buttons__login">Log in</button>
             <button className="header__sidebar__buttons__signup">
               Sign up
             </button>
-          </div>
+          </div> */}
         </div>
       )}
     </>

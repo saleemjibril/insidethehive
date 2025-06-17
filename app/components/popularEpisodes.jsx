@@ -147,7 +147,7 @@ export default function PopularEpisodes({
   if (episodes.length === 0) return <div>No episodes found</div>;
 
   return (
-    <div className="pop-episodes">
+    <div className="pop-episodes" id="popular">
       <div className="pop-episodes__title">
         Popular <span>Episodes</span>
       </div>
@@ -160,7 +160,7 @@ export default function PopularEpisodes({
           >
             <div className="pop-episodes__slider__card__image">
               <img
-                style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                style={{ objectFit: 'cover', width: '100%', height: 'auto' }}
                 src={episode.images?.[0]?.url || '/assets/podcast-placeholder.jpg'}
                 alt={episode.name}
               />
@@ -182,7 +182,7 @@ export default function PopularEpisodes({
           >
             <div className="pop-episodes__slider__card__image">
               <img
-                style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                style={{ objectFit: 'cover', width: '100%', height: 'auto' }}
                 src={episode.images?.[0]?.url || '/assets/podcast-placeholder.jpg'}
                 alt={episode.name}
               />
