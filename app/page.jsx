@@ -1,6 +1,7 @@
 import AllEpisodes from "./components/allEpisodes";
 import LatestEpisode from "./components/latestEpisode";
 import ListenOn from "./components/listenOn";
+import MediumArticles from "./components/mediumArticles";
 import Player from "./components/player";
 import PopularEpisodes from "./components/popularEpisodes";
 import SpotifyPodcast from "./components/spotify";
@@ -20,6 +21,7 @@ export async function generateMetadata() {
 export default function Home() {
   return (
     <>
+    {/* <MediumArticles /> */}
     {/* <SpotifyPodcast 
     clientId={"34a81146217d4ccaa855f8e53f8163ac"}
     clientSecret={"90750daa64184a31bf03e6ac2426b3bd"}

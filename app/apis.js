@@ -2,6 +2,27 @@ import axios from "axios";
 
 
   
+export const getArticlesx = async () => {
+  console.log("my requeste!");
+  
+ try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/article`, {
+      next: {
+        revalidate: 3600 // Revalidate every hour
+      }
+    });
+    
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+    
+    return res.json();
+  } catch (error) {
+    console.error("FAILED ERROR", error);
+    throw error;
+  }
+};
+
 export const getAllEvents = async () => {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/events`, {

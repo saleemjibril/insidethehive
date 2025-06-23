@@ -19,6 +19,7 @@ export default function Header() {
           <a href="#latest">Latest Episode</a>
           <a href="#popular">Popular Episodes</a>
           <a href="#all">All Episodes</a>
+          <a href="/articles">Articles</a>
         </nav>
 
         <div className="header__buttons">
@@ -37,6 +38,13 @@ export default function Header() {
       {open && (
         <div className="header__sidebar">
           <div className="header__sidebar__close">
+             <Link href="/" prefetch={true} className="header__logo">
+          <Image alt="" src={"/assets/icons/logo-trans.svg"} width={100} height={100} />
+          <div>
+          {/* Inside<span>TheHive</span> */}
+          </div>
+        </Link>
+        
             <Image
               src="/assets/icons/close.svg"
               width={40}
@@ -67,6 +75,13 @@ export default function Header() {
               onClick={() => setOpen(false)}
             >
              All Episodes
+            </a>
+            <a
+              className="header__sidebar__link"
+              href="/articles"
+              onClick={() => setOpen(false)}
+            >
+             Articles
             </a>
           </div>
           {/* <div className="header__sidebar__buttons">

@@ -24,6 +24,10 @@
       @extend %title-32;
       text-transform: uppercase;
       font-family: var(--font-durkwide);
+
+       @media (max-width: $phone) {
+              font-size: 24px;
+            }
     }
 
     & > :last-child {
