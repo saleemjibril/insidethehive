@@ -37,9 +37,10 @@ export default function MediumArticles({
     try {
       setLoading(true);
       const response = await getArticlesx();
+      console.log("getArticlesx", response);
       
       // Extract articles from the response structure
-      const articlesData = response?.parsedData?.payload?.references?.Post || {};
+      const articlesData = response?.data || {};
       const articlesArray = Object.values(articlesData);
       
       console.log("All articles fetched:", articlesArray.length);
@@ -382,9 +383,9 @@ export default function MediumArticles({
                       {article.title}
                     </div>
                     <div className="episodes__cards__card__inner__details__subtitle">
-                      {(article.content?.subtitle || article.virtuals?.subtitle || '').length > 200 
-                        ? `${(article.content?.subtitle || article.virtuals?.subtitle || '').substring(0, 200)}...` 
-                        : (article.content?.subtitle || article.virtuals?.subtitle || 'Click to read this article on Medium')
+                      {(article?.description|| '').length > 200 
+                        ? `${(article?.description || '').substring(0, 200)}...` 
+                        : (article?.description|| 'Click to read this article on Medium')
                       }
                     </div>
                     <div className="episodes__cards__card__inner__details__tags">
@@ -397,10 +398,10 @@ export default function MediumArticles({
 
                   <div className="episodes__cards__card__inner__preview" >
                     {/* Article Preview Image */}
-                    {article.virtuals?.previewImage?.imageId && (
+                    {article.featuredImage?.url && (
                       <div style={{ width: '100%', marginBottom: '0' }}>
                         <img 
-                          src={`https://miro.medium.com/v2/resize:fit:800/1*${article.virtuals.previewImage.imageId.split('*')[1]}`}
+                          src={`https://miro.medium.com/v2/resize:fit:800/1*${article.featuredImage?.url.split('*')[1]}`}
                           alt={article.title}
                           style={{ 
                             width: '100%', 
@@ -424,7 +425,7 @@ export default function MediumArticles({
                      {/* Article Link Button */}
                     <div style={{ width: '100%', marginBottom: '10px'}}>
                       <a 
-                        href={getArticleUrl(article)}
+                        href={article.guid}
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{
