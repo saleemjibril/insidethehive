@@ -3,7 +3,7 @@ import axios from "axios";
 
   
 export const getArticlesx = async () => {
-  console.log("my requeste!");
+  console.log("my requeste!", process.env.NEXT_PUBLIC_URL);
   
  try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/article`, {

@@ -34,7 +34,7 @@ export default function Home() {
     showId={"0wOOX8mdQUoRP1adnxV9VD"}
     />
     <SpotifyComponent />
-    <Player />
+    {/* <Player /> */}
     <ListenOn />
     <Testimonials />
     

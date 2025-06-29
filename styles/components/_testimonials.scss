@@ -24,7 +24,7 @@
 
         &__title {
           padding: 8px 12px;
-          background: #2f2e2e;
+          background: #fff;
           display: flex;
           align-items: center;
           gap: 10px;
@@ -73,8 +73,9 @@
             min-width: 362px;
             height: 240px;
             padding: 24px;
-            border: 1px solid #2f2e2e;
+            border: 2px solid #dbdbe1;
             border-radius: 16px;
+            background: #f7f7f8;
             // background: rgba(20, 20, 20, 1);
             transition: transform 0.7s;
             cursor: pointer;
@@ -133,12 +134,12 @@
           // animation-play-state: paused;
 
           & > :nth-child(odd) {
-            background: $secondary-color;
-            color: #000;
-            font-weight: 500;
+            background: #17171c;
+            border: none;
+            color: #fff;
 
             .testimonials__slider__card__profile__subtitle {
-              color: #000;
+              color: #fff;
             }
 
           }
@@ -158,13 +159,12 @@
 
           
           & > :nth-child(odd) {
-            background: $secondary-color;
-
-            color: #000;
-            font-weight: 500;
+            background: #17171c;
+            border: none;
+            color: #fff;
 
             .testimonials__slider__card__profile__subtitle {
-              color: #000;
+              color: #fff;
             }
           }
 

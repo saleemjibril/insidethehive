@@ -71,7 +71,8 @@
         padding: 12px 24px;
         border-radius: 24px;
         font-weight: 500;
-        background: #2f2e2e;
+        // background: #2f2e2e;
+        background: #000;
         font-size: 14px;
       }
     }
@@ -81,17 +82,17 @@
     &__card {
       width: 100%;
 
-      &:hover {
-        background: #2f2e2e;
-        transition: 0.4s;
-        cursor: pointer;
+      // &:hover {
+      //   background: #2f2e2e;
+      //   transition: 0.4s;
+      //   cursor: pointer;
 
-        .episodes__cards__card__inner__details__tags {
-            & > div {
-                background: #000 !important;
-            }
-        }
-      }
+      //   .episodes__cards__card__inner__details__tags {
+      //       & > div {
+      //           background: #000 !important;
+      //       }
+      //   }
+      // }
       &__inner {
         width: 100%;
         max-width: 1440px;
@@ -131,11 +132,12 @@
             gap: 7px;
             & > div {
               width: fit-content;
-              padding: 10px 18px;
-              border-radius: 24px;
+              padding: 5px 8px;
+              border-radius: 6px;
               font-weight: 500;
-              background: #2f2e2e;
-              font-size: 12px;
+              background: #FFF;
+              font-size: 14px;
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
             }
           }
         }
