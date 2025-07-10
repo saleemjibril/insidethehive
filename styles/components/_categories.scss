@@ -1,0 +1,186 @@
+.categories {
+    width: 100%;
+    max-width: 1192px;
+    padding: 70px 20px 60px 20px;
+    margin: 0 auto;
+}
+
+.categories__card {
+    position: relative;
+    width: 100%;
+    height: 640px;
+    padding: 20px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    overflow: hidden;
+    // border-radius: 12px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+}
+
+.categories__card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.categories__card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.categories__card:hover .categories__card__image img {
+    transform: scale(1.1);
+}
+
+.categories__card__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.categories__card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.categories__card__title {
+    font-size: 60px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    line-height: 1;
+}
+
+.letter {
+    opacity: 0;
+    transform: translateY(50px) rotateX(90deg);
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-delay: var(--delay);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.categories__card.visible .letter {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+}
+
+.categories__card:hover .letter {
+    transform: translateY(-10px) rotateX(0);
+    text-shadow: 4px 4px 8px rgba(0,0,0,0.7);
+}
+
+.categories__card__button-group {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-delay: 0.4s;
+}
+
+.categories__card.visible .categories__card__button-group {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.categories__card__button-group button {
+    background: transparent;
+    height: fit-content;
+    width: fit-content;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 12px;
+    font-weight: 600;
+    border: 2px solid;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.1);
+}
+
+.categories__card__button-group button:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.brand-text {
+    font-weight: 900;
+    letter-spacing: 4px;
+    font-size: 14px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+}
+
+.categories__card:hover .brand-text {
+    letter-spacing: 6px;
+    transform: translateX(5px);
+}
+
+/* Pulse animation for emphasis */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.categories__card:hover .letter:nth-child(odd) {
+    animation: pulse 1s ease-in-out infinite;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .categories__card {
+        height: 500px;
+        padding: 20px 30px;
+    }
+    
+    .categories__card__title {
+        font-size: 40px;
+    }
+    
+    .categories__card__button-group {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .categories__card,
+    .letter,
+    .categories__card__button-group,
+    .categories__card__image img {
+        transition: none;
+        animation: none;
+    }
+    
+    .categories__card {
+        opacity: 1;
+        transform: none;
+    }
+    
+    .letter {
+        opacity: 1;
+        transform: none;
+    }
+    
+    .categories__card__button-group {
+        opacity: 1;
+        transform: none;
+    }
+}

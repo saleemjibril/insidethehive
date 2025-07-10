@@ -3,8 +3,8 @@
       .pop-episodes {
         // max-width: 1192px;
         // width: 100%;
-        padding: 40px 0;
-        margin: 160px auto 0 auto;
+        padding: 60px 0;
+        margin: 0 auto 0 auto;
         overflow: hidden;
         scroll-behavior: smooth;
         transition: 0.3s;
@@ -13,8 +13,9 @@
         display: flex;
         flex-direction: column;
         gap: 40px;
-        margin-bottom: 200px;
-        margin-top: 200px;
+        // margin-bottom: 200px;
+        // margin-top: 200px;
+        // background: yellow;
     
   
         @media (max-width: $phone) {
@@ -26,17 +27,17 @@
         }
 
         &__title {
-          font-size: 72px;
+          @extend %title-72;
           font-weight: 700;
-          margin-bottom: 20px;
+          margin-bottom: 40px;
           width: 100%;
           max-width: 20ch;
           text-align: center;
           font-family: var(--font-durkwide);
+
+        
           
-          @media (max-width: $phone) {
-            font-size: 48px;
-          }
+         
       
           & > span {
             color: $secondary-color;

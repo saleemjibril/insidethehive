@@ -1,8 +1,30 @@
-%title-60 {
-  font-size: 6rem;
+%title-72 {
+  font-size: 72px;
+ 
+
+  @media (max-width: $tablet) {
+    font-size: 48px;
+  }
+
+  @media (max-width: $phone) {
+    font-size: 36px;
+}
+}
+%title-64 {
+  font-size: 64px;
   font-weight: 800;
   color: #fff;
-  font-family: var(--font-ojuju);
+  line-height: 72px;
+
+  @media (max-width: 565px) {
+    font-size: 36px;
+    line-height: 48px;
+  }
+}
+%title-60 {
+  font-size: 60px;
+  font-weight: 800;
+  color: #fff;
   line-height: 72px;
 
   @media (max-width: 565px) {

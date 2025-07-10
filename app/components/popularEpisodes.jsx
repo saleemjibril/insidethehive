@@ -3,6 +3,160 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
+// Skeleton Loader Component for Popular Episodes
+const PopularEpisodesSkeleton = ({ duplicateCount = 2 }) => {
+  // Create skeleton items for both sliders
+  const skeletonItems = Array(12).fill(null); // 12 skeleton items per slider
+  const duplicatedSkeletonItems = Array(duplicateCount).fill(skeletonItems).flat();
+
+  return (
+    <div className="pop-episodes" id="popular">
+      <div className="pop-episodes__title">
+        Popular <span>Episodes</span>
+      </div>
+      
+      <div className="pop-episodes__slider pop-episodes__slider-left">
+        {duplicatedSkeletonItems.map((_, index) => (
+          <div className="pop-episodes__slider__card skeleton-card" key={`skeleton-left-${index}`}>
+            <div className="skeleton-episode-image"></div>
+            <div className="skeleton-episode-content">
+              <div className="skeleton-episode-title"></div>
+              <div className="skeleton-episode-info"></div>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div className="pop-episodes__slider pop-episodes__slider-right">
+        {duplicatedSkeletonItems.map((_, index) => (
+          <div className="pop-episodes__slider__card skeleton-card" key={`skeleton-right-${index}`}>
+            <div className="skeleton-episode-image"></div>
+            <div className="skeleton-episode-content">
+              <div className="skeleton-episode-title"></div>
+              <div className="skeleton-episode-info"></div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <style jsx>{`
+        .skeleton-card {
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 12px;
+          overflow: hidden;
+          cursor: default;
+          transition: none;
+        }
+        
+        .skeleton-card:hover {
+          transform: none;
+        }
+        
+        .skeleton-episode-image {
+          width: 100%;
+          height: 200px;
+          background: linear-gradient(90deg, 
+            rgba(255, 255, 255, 0.1) 0%, 
+            rgba(255, 255, 255, 0.2) 50%, 
+            rgba(255, 255, 255, 0.1) 100%
+          );
+          background-size: 200% 100%;
+          animation: shimmer 2s infinite;
+          border-radius: 8px 8px 0 0;
+        }
+        
+        .skeleton-episode-content {
+          padding: 16px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+        
+        .skeleton-episode-title {
+          height: 18px;
+          width: 85%;
+          background: linear-gradient(90deg, 
+            rgba(255, 255, 255, 0.1) 0%, 
+            rgba(255, 255, 255, 0.2) 50%, 
+            rgba(255, 255, 255, 0.1) 100%
+          );
+          background-size: 200% 100%;
+          animation: shimmer 2s infinite;
+          border-radius: 4px;
+          animation-delay: 0.1s;
+        }
+        
+        .skeleton-episode-info {
+          height: 14px;
+          width: 45%;
+          background: linear-gradient(90deg, 
+            rgba(255, 255, 255, 0.1) 0%, 
+            rgba(255, 255, 255, 0.2) 50%, 
+            rgba(255, 255, 255, 0.1) 100%
+          );
+          background-size: 200% 100%;
+          animation: shimmer 2s infinite;
+          border-radius: 4px;
+          animation-delay: 0.2s;
+        }
+        
+        @keyframes shimmer {
+          0% {
+            background-position: -200% 0;
+          }
+          100% {
+            background-position: 200% 0;
+          }
+        }
+        
+        /* Add staggered animation delays for a more natural effect */
+        .skeleton-card:nth-child(2n) .skeleton-episode-image {
+          animation-delay: 0.1s;
+        }
+        
+        .skeleton-card:nth-child(2n) .skeleton-episode-title {
+          animation-delay: 0.2s;
+        }
+        
+        .skeleton-card:nth-child(2n) .skeleton-episode-info {
+          animation-delay: 0.3s;
+        }
+        
+        .skeleton-card:nth-child(3n) .skeleton-episode-image {
+          animation-delay: 0.2s;
+        }
+        
+        .skeleton-card:nth-child(3n) .skeleton-episode-title {
+          animation-delay: 0.3s;
+        }
+        
+        .skeleton-card:nth-child(3n) .skeleton-episode-info {
+          animation-delay: 0.4s;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+          .skeleton-episode-image {
+            height: 150px;
+          }
+          
+          .skeleton-episode-content {
+            padding: 12px;
+          }
+          
+          .skeleton-episode-title {
+            height: 16px;
+          }
+          
+          .skeleton-episode-info {
+            height: 12px;
+          }
+        }
+      `}</style>
+    </div>
+  );
+};
+
 export default function PopularEpisodes({ 
   clientId,
   clientSecret,
@@ -142,9 +296,36 @@ export default function PopularEpisodes({
     return words.length > 4 ? words.slice(0, 4).join(' ') + '...' : episodeName;
   };
 
-  if (loading) return <div>Loading popular episodes...</div>;
-  if (error) return <div>Error loading episodes: {error}</div>;
-  if (episodes.length === 0) return <div>No episodes found</div>;
+  // Show skeleton loader while loading
+  if (loading) {
+    return <PopularEpisodesSkeleton duplicateCount={duplicateCount} />;
+  }
+  
+  if (error) {
+    return (
+      <div className="pop-episodes" id="popular">
+        <div className="pop-episodes__title">
+          Popular <span>Episodes</span>
+        </div>
+        <div className="pop-episodes__error">
+          Error loading episodes: {error}
+        </div>
+      </div>
+    );
+  }
+  
+  if (episodes.length === 0) {
+    return (
+      <div className="pop-episodes" id="popular">
+        <div className="pop-episodes__title">
+          Popular <span>Episodes</span>
+        </div>
+        <div className="pop-episodes__empty">
+          No episodes found
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="pop-episodes" id="popular">

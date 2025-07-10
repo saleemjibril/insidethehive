@@ -4,6 +4,181 @@
 import { useState, useEffect } from 'react';
 import Image from "next/image";
 
+// Skeleton Loader Component
+const SkeletonLoader = () => {
+  return (
+    <div className="episodes">
+      {/* Header Skeleton */}
+      <div className="episodes__title-group" style={{ marginBottom: '20px' }}>
+        <div style={{
+          width: '200px',
+          height: '24px',
+          backgroundColor: '#f0f0f0',
+          borderRadius: '4px',
+          animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+        }}></div>
+        <div style={{
+          width: '100px',
+          height: '24px',
+          backgroundColor: '#f0f0f0',
+          borderRadius: '4px',
+          animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+        }}></div>
+      </div>
+
+      {/* Search Input Skeleton */}
+      <div style={{ marginBottom: '20px' }}>
+        <div style={{
+          width: '100%',
+          height: '48px',
+          backgroundColor: '#f0f0f0',
+          borderRadius: '8px',
+          animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+        }}></div>
+      </div>
+
+      {/* Filter Tags Skeleton */}
+      <div style={{ marginBottom: '30px' }}>
+        <div style={{
+          width: '150px',
+          height: '16px',
+          backgroundColor: '#f0f0f0',
+          borderRadius: '4px',
+          marginBottom: '10px',
+          animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+        }}></div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+          {[...Array(8)].map((_, i) => (
+            <div
+              key={i}
+              style={{
+                width: `${Math.random() * 60 + 60}px`,
+                height: '28px',
+                backgroundColor: '#f0f0f0',
+                borderRadius: '6px',
+                animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                animationDelay: `${i * 0.1}s`
+              }}
+            ></div>
+          ))}
+        </div>
+      </div>
+
+      {/* Episode Cards Skeleton */}
+      <div className="episodes__cards">
+        {[...Array(6)].map((_, index) => (
+          <div key={index} className="episodes__cards__card">
+            <div className="episodes__cards__card__inner">
+              <div className="episodes__cards__card__inner__details">
+                {/* Title Skeleton */}
+                <div style={{
+                  width: '80%',
+                  height: '24px',
+                  backgroundColor: '#f0f0f0',
+                  borderRadius: '4px',
+                  marginBottom: '12px',
+                  animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                  animationDelay: `${index * 0.1}s`
+                }}></div>
+                
+                {/* Description Skeleton */}
+                <div style={{ marginBottom: '16px' }}>
+                  <div style={{
+                    width: '100%',
+                    height: '14px',
+                    backgroundColor: '#f0f0f0',
+                    borderRadius: '4px',
+                    marginBottom: '8px',
+                    animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    animationDelay: `${index * 0.1 + 0.2}s`
+                  }}></div>
+                  <div style={{
+                    width: '85%',
+                    height: '14px',
+                    backgroundColor: '#f0f0f0',
+                    borderRadius: '4px',
+                    marginBottom: '8px',
+                    animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    animationDelay: `${index * 0.1 + 0.3}s`
+                  }}></div>
+                  <div style={{
+                    width: '60%',
+                    height: '14px',
+                    backgroundColor: '#f0f0f0',
+                    borderRadius: '4px',
+                    animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    animationDelay: `${index * 0.1 + 0.4}s`
+                  }}></div>
+                </div>
+
+                {/* Tags Skeleton */}
+                <div className="episodes__cards__card__inner__details__tags">
+                  {[...Array(3)].map((_, tagIndex) => (
+                    <div
+                      key={tagIndex}
+                      style={{
+                        width: `${Math.random() * 40 + 50}px`,
+                        height: '20px',
+                        backgroundColor: '#f0f0f0',
+                        borderRadius: '4px',
+                        animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        animationDelay: `${index * 0.1 + tagIndex * 0.1}s`
+                      }}
+                    ></div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="episodes__cards__card__inner__preview">
+                {/* Spotify Embed Skeleton */}
+                <div style={{
+                  width: '100%',
+                  height: '152px',
+                  backgroundColor: '#f0f0f0',
+                  borderRadius: '12px',
+                  animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                  animationDelay: `${index * 0.1 + 0.5}s`
+                }}></div>
+
+                {/* Date and Duration Skeleton */}
+                <div className="episodes__cards__card__inner__preview__group">
+                  <div style={{
+                    width: '80px',
+                    height: '14px',
+                    backgroundColor: '#f0f0f0',
+                    borderRadius: '4px',
+                    animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    animationDelay: `${index * 0.1 + 0.6}s`
+                  }}></div>
+                  <div style={{
+                    width: '40px',
+                    height: '14px',
+                    backgroundColor: '#f0f0f0',
+                    borderRadius: '4px',
+                    animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    animationDelay: `${index * 0.1 + 0.7}s`
+                  }}></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <style jsx>{`
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.5;
+          }
+        }
+      `}</style>
+    </div>
+  );
+};
+
 export default function AllEpisodes({ 
   clientId,
   clientSecret,
@@ -271,7 +446,7 @@ export default function AllEpisodes({
     return `${minutes}m`;
   };
 
-  if (loading) return <div>Loading podcast episodes...</div>;
+  if (loading) return <SkeletonLoader />;
   if (error) return <div>Error loading podcast: {error}</div>;
 
   const { episodes: paginatedEpisodes, totalCount, totalPages } = getPaginatedEpisodes();

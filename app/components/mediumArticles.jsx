@@ -5,6 +5,193 @@ import { useState, useEffect } from 'react';
 import Image from "next/image";
 import { getArticlesx } from '../apis';
 
+// Skeleton Loader Component
+const SkeletonLoader = () => {
+  return (
+    <div className="episodes">
+      {/* Header Skeleton */}
+      <div className="episodes__title-group" style={{ marginBottom: '20px' }}>
+        <div style={{
+          width: '200px',
+          height: '24px',
+          backgroundColor: '#f0f0f0',
+          borderRadius: '4px',
+          animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+        }}></div>
+        <div style={{
+          width: '100px',
+          height: '24px',
+          backgroundColor: '#f0f0f0',
+          borderRadius: '4px',
+          animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+        }}></div>
+      </div>
+
+      {/* Search Input Skeleton */}
+      <div style={{ marginBottom: '20px' }}>
+        <div style={{
+          width: '100%',
+          height: '48px',
+          backgroundColor: '#f0f0f0',
+          borderRadius: '8px',
+          animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+        }}></div>
+      </div>
+
+      {/* Filter Tags Skeleton */}
+      <div style={{ marginBottom: '30px' }}>
+        <div style={{
+          width: '150px',
+          height: '16px',
+          backgroundColor: '#f0f0f0',
+          borderRadius: '4px',
+          marginBottom: '10px',
+          animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+        }}></div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+          {[...Array(8)].map((_, i) => (
+            <div
+              key={i}
+              style={{
+                width: `${Math.random() * 60 + 60}px`,
+                height: '28px',
+                backgroundColor: '#f0f0f0',
+                borderRadius: '6px',
+                animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                animationDelay: `${i * 0.1}s`
+              }}
+            ></div>
+          ))}
+        </div>
+      </div>
+
+      {/* Article Cards Skeleton */}
+      <div className="episodes__cards">
+        {[...Array(6)].map((_, index) => (
+          <div key={index} className="episodes__cards__card">
+            <div className="episodes__cards__card__inner">
+              <div className="episodes__cards__card__inner__details">
+                {/* Title Skeleton */}
+                <div style={{
+                  width: '80%',
+                  height: '24px',
+                  backgroundColor: '#f0f0f0',
+                  borderRadius: '4px',
+                  marginBottom: '12px',
+                  animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                  animationDelay: `${index * 0.1}s`
+                }}></div>
+                
+                {/* Description Skeleton */}
+                <div style={{ marginBottom: '16px' }}>
+                  <div style={{
+                    width: '100%',
+                    height: '14px',
+                    backgroundColor: '#f0f0f0',
+                    borderRadius: '4px',
+                    marginBottom: '8px',
+                    animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    animationDelay: `${index * 0.1 + 0.2}s`
+                  }}></div>
+                  <div style={{
+                    width: '85%',
+                    height: '14px',
+                    backgroundColor: '#f0f0f0',
+                    borderRadius: '4px',
+                    marginBottom: '8px',
+                    animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    animationDelay: `${index * 0.1 + 0.3}s`
+                  }}></div>
+                  <div style={{
+                    width: '60%',
+                    height: '14px',
+                    backgroundColor: '#f0f0f0',
+                    borderRadius: '4px',
+                    animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    animationDelay: `${index * 0.1 + 0.4}s`
+                  }}></div>
+                </div>
+
+                {/* Tags Skeleton */}
+                <div className="episodes__cards__card__inner__details__tags">
+                  {[...Array(3)].map((_, tagIndex) => (
+                    <div
+                      key={tagIndex}
+                      style={{
+                        width: `${Math.random() * 40 + 50}px`,
+                        height: '20px',
+                        backgroundColor: '#f0f0f0',
+                        borderRadius: '4px',
+                        animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        animationDelay: `${index * 0.1 + tagIndex * 0.1}s`
+                      }}
+                    ></div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="episodes__cards__card__inner__preview">
+                {/* Article Image Skeleton */}
+                <div style={{
+                  width: '100%',
+                  height: '150px',
+                  backgroundColor: '#f0f0f0',
+                  borderRadius: '8px',
+                  marginBottom: '10px',
+                  animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                  animationDelay: `${index * 0.1 + 0.5}s`
+                }}></div>
+
+                {/* Date and Reading Time Skeleton */}
+                <div className="episodes__cards__card__inner__preview__group">
+                  <div style={{
+                    width: '80px',
+                    height: '14px',
+                    backgroundColor: '#f0f0f0',
+                    borderRadius: '4px',
+                    animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    animationDelay: `${index * 0.1 + 0.6}s`
+                  }}></div>
+                  <div style={{
+                    width: '60px',
+                    height: '14px',
+                    backgroundColor: '#f0f0f0',
+                    borderRadius: '4px',
+                    animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    animationDelay: `${index * 0.1 + 0.7}s`
+                  }}></div>
+                </div>
+
+                {/* Read Button Skeleton */}
+                <div style={{
+                  width: '100%',
+                  height: '48px',
+                  backgroundColor: '#f0f0f0',
+                  borderRadius: '8px',
+                  marginBottom: '10px',
+                  animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                  animationDelay: `${index * 0.1 + 0.8}s`
+                }}></div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <style jsx>{`
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.5;
+          }
+        }
+      `}</style>
+    </div>
+  );
+};
+
 export default function MediumArticles({ 
   maxResults = 20,
   initialKeyword = ''
@@ -25,8 +212,6 @@ export default function MediumArticles({
 
   // Dynamic tags extracted from actual article content
   const [availableTags, setAvailableTags] = useState([]);
-
-
 
   // Fetch articles when component mounts
   useEffect(() => {
@@ -230,7 +415,7 @@ export default function MediumArticles({
     return `https://medium.com/@${article.creatorId}/${article.uniqueSlug}`;
   };
 
-  if (loading) return <div>Loading Medium articles...</div>;
+  if (loading) return <SkeletonLoader />;
   if (error) return <div>Error loading articles: {error}</div>;
 
   const { articles: paginatedArticles, totalCount, totalPages } = getPaginatedArticles();
@@ -294,11 +479,11 @@ export default function MediumArticles({
               onClick={() => handleTagClick(tag)}
               style={{
                 cursor: 'pointer',
-                backgroundColor: selectedTag === tag ? '#FFD700' : 'transparent',
-                color: selectedTag === tag ? '#000' : '#FFF',
-                padding: '8px 16px',
-                borderRadius: '20px',
-                border: selectedTag === tag ? '2px solid #FFD700' : '2px solid #ccc',
+                backgroundColor: selectedTag === tag ? '#FFD700' : '#FFF',
+                color: selectedTag === tag ? '#17171c' : '#17171c',
+                padding: '5px 8px',
+                borderRadius: '6px',
+                boxShadow: selectedTag === tag ? "" : "0 2px 8px rgba(0, 0, 0, 0.15)",
                 fontSize: '14px',
                 fontWeight: selectedTag === tag ? 'bold' : 'normal',
                 transition: 'all 0.2s ease',
@@ -321,9 +506,8 @@ export default function MediumArticles({
                 cursor: 'pointer',
                 backgroundColor: '#dc3545',
                 color: 'white',
-                padding: '8px 16px',
-                borderRadius: '20px',
-                border: '2px solid #dc3545',
+                padding: '5px 8px',
+                borderRadius: '6px',
                 fontSize: '14px',
                 fontWeight: 'bold',
                 transition: 'all 0.2s ease',
@@ -396,10 +580,10 @@ export default function MediumArticles({
                     </div>
                   </div>
 
-                  <div className="episodes__cards__card__inner__preview" >
+                  <div className="episodes__cards__card__inner__preview">
                     {/* Article Preview Image */}
                     {article.featuredImage?.url && (
-                      <div style={{ width: '100%', marginBottom: '0' }}>
+                      <div style={{ width: '100%', marginBottom: '10px' }}>
                         <img 
                           src={`https://miro.medium.com/v2/resize:fit:800/1*${article.featuredImage?.url.split('*')[1]}`}
                           alt={article.title}
@@ -416,13 +600,12 @@ export default function MediumArticles({
                       </div>
                     )}
 
-                   
-
-                    <div className="episodes__cards__card__inner__preview__group"  style={{color: "#000" }}>
+                    <div className="episodes__cards__card__inner__preview__group">
                       <div>{publishDate.toLocaleDateString()}</div>
                       <div>{formatReadingTime(article.virtuals?.readingTime)}</div>
                     </div>
-                     {/* Article Link Button */}
+                    
+                    {/* Article Link Button */}
                     <div style={{ width: '100%', marginBottom: '10px'}}>
                       <a 
                         href={article.guid}

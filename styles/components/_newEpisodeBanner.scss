@@ -1,0 +1,177 @@
+
+// Block: sliding-text
+.sliding-text {
+    position: relative;
+    background: #1a1a1a;
+    background-image: linear-gradient(135deg, #667eea 0%, yellow 100%);
+    overflow: hidden;
+    padding: 2rem 0;
+    
+    // Element: wave (top and bottom)
+    &__wave {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 100px;
+      overflow: hidden;
+      line-height: 0;
+      
+      svg {
+        position: relative;
+        display: block;
+        width: calc(100% + 1.3px);
+        height: 100px;
+      }
+      
+      // Modifier: top
+      &--top {
+        top: 0;
+        
+        svg {
+          transform: rotate(180deg);
+        }
+      }
+      
+      // Modifier: bottom
+      &--bottom {
+        bottom: 0;
+      }
+    }
+    
+    // Element: wave fill
+    &__wave-fill {
+      fill: #FFF;
+    }
+    
+    // Element: container
+    &__container {
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      width: 100%;
+      white-space: nowrap;
+      padding: 2rem 0;
+      
+      // Modifier: reverse
+      &--reverse {
+        transform: rotate(180deg);
+        
+        .sliding-text__text {
+          transform: scale(-1, -1);
+        }
+      }
+    }
+    
+    // Element: text wrapper
+    &__text-wrapper {
+      position: relative;
+      display: block;
+      width: 10000vw;
+      max-width: 10000vw;
+    }
+    
+    // Element: hidden text (for measurement)
+    &__hidden-text {
+      position: absolute;
+      visibility: hidden;
+      white-space: nowrap;
+    }
+    
+    // Element: animated text
+    &__animated-text {
+      display: flex;
+      animation: sliding var(--speed, 10s) linear infinite;
+    }
+    
+    // Element: text
+    &__text {
+      flex-shrink: 0;
+      margin: 0;
+      padding: 0 2rem;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #FFF;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      
+    //   @include respond-to(tablet) {
+    //     font-size: 1.8rem;
+    //   }
+      
+    //   @include respond-to(mobile) {
+    //     font-size: 1.4rem;
+    //   }
+    }
+    
+    // Element: text in hidden state
+    &__hidden-text &__text {
+      display: inline-block;
+    }
+    
+    // Modifier: paused (for hover effect)
+    &--paused {
+      .sliding-text__animated-text {
+        animation-play-state: paused;
+      }
+    }
+    
+    // Hover state
+    &:hover {
+      .sliding-text__animated-text {
+        animation-play-state: paused;
+      }
+    }
+    
+    // Smooth transitions
+    transition: all 0.3s ease-in-out;
+    
+    // Hide scrollbars
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  // ==========================================================================
+  // KEYFRAMES
+  // ==========================================================================
+  
+  @keyframes sliding {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  @-webkit-keyframes sliding {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  @-moz-keyframes sliding {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  @-o-keyframes sliding {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }

@@ -1,10 +1,10 @@
 .listen-on {
     width: 100%;
     max-width: 1440px;
-    padding: 0 20px;
+    padding: 60px 20px;
     margin: 0 auto;
-    margin-bottom: 200px;
-    margin-top: 200px;
+    // margin-bottom: 200px;
+    // margin-top: 200px;
     &__title {
         @extend %title-48;
         font-family: var(--font-durkwide);

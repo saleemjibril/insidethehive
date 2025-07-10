@@ -222,7 +222,7 @@ export default function Header() {
           <a href="#latest">Latest Episode</a>
           <a href="#popular">Popular Episodes</a>
           <a href="#all">All Episodes</a>
-          <a href="/articles">Articles</a>
+          <a href="#articles">Articles</a>
         </nav>
 
         <div className="header__buttons" ref={buttonsRef}>
@@ -286,7 +286,7 @@ export default function Header() {
             </a>
             <a
               className="header__sidebar__link"
-              href="/articles"
+              href="#articles"
               onClick={handleSidebarLinkClick}
               ref={el => sidebarLinksRef.current[3] = el}
             >

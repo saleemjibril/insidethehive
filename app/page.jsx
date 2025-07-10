@@ -1,12 +1,19 @@
 import AllEpisodes from "./components/allEpisodes";
+import Categories from "./components/catgories";
+import Engage from "./components/engage";
+import Footer from "./components/footer";
 import LatestEpisode from "./components/latestEpisode";
 import ListenOn from "./components/listenOn";
 import MediumArticles from "./components/mediumArticles";
+import NewEpisodeBanner from "./components/newEpisodeBanner";
+import NewEpisodeMarquee from "./components/newEpisodeMarquee";
 import Player from "./components/player";
 import PopularEpisodes from "./components/popularEpisodes";
 import SpotifyPodcast from "./components/spotify";
 import SpotifyComponent from "./components/spotifyComponent";
 import Testimonials from "./components/testimonials";
+import TheTeam from "./components/theTeam";
+import WorkTogether from "./components/workTogether";
 
 
 export async function generateMetadata() {
@@ -27,22 +34,39 @@ export default function Home() {
     clientSecret={"90750daa64184a31bf03e6ac2426b3bd"}
     showId={"0wOOX8mdQUoRP1adnxV9VD"}
     /> */}
-    <LatestEpisode />
+    <LatestEpisode
+     clientId={"34a81146217d4ccaa855f8e53f8163ac"}
+     clientSecret={"90750daa64184a31bf03e6ac2426b3bd"}
+     showId={"0wOOX8mdQUoRP1adnxV9VD"}
+    />
+    <NewEpisodeMarquee />
     <PopularEpisodes
     clientId={"34a81146217d4ccaa855f8e53f8163ac"}
     clientSecret={"90750daa64184a31bf03e6ac2426b3bd"}
     showId={"0wOOX8mdQUoRP1adnxV9VD"}
     />
-    <SpotifyComponent />
+    <WorkTogether />
+    <Categories />
+    <Engage />
+    <SpotifyComponent /> 
+
+
+
+
     {/* <Player /> */}
     <ListenOn />
     <Testimonials />
+    <TheTeam />
+    {/* <NewEpisodeBanner /> */}
     
-    <AllEpisodes
+  <AllEpisodes
      clientId={"34a81146217d4ccaa855f8e53f8163ac"}
     clientSecret={"90750daa64184a31bf03e6ac2426b3bd"}
     showId={"0wOOX8mdQUoRP1adnxV9VD"}
     />
+
+    <Footer /> 
+
     </>
   );
 }

@@ -1,0 +1,116 @@
+.engage {
+    width: 100%;
+    max-width: 1192px;
+    padding: 70px 20px 60px 20px;
+    margin: 0 auto;
+
+    &__title {
+        @extend %title-72;
+        font-weight: 700;
+        margin-bottom: 40px;
+        width: 100%;
+        max-width: 20ch;
+        text-align: center;
+        font-family: var(--font-durkwide);
+        
+       
+    
+        & > span {
+          color: $secondary-color;
+        }
+      }
+
+   &__inner {
+    position: relative;
+   
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 500px;
+    border-radius: 24px;
+    overflow: hidden;
+
+    & > img {
+        z-index: -1;
+    }
+    
+
+    // &__title {
+    //     @extend %title-60;
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: space-between;
+    //     margin-bottom: 20px;
+    //     color: #ffb4ff;
+    // }
+
+   
+    
+
+    &__social-group {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        // justify-content: center;
+        gap: 20px;
+    }
+    
+
+    &__subtitle {
+        @extend %title-18;
+        margin-bottom: 40px;
+        font-weight: 900;
+        color: $secondary-color;
+        text-align: center;
+    }
+
+    &__form {
+        display: flex;
+        align-items: center;
+        padding: 6px;
+        border-radius: 24px;
+        background: #FFF;
+        width: fit-content;
+        margin: 0 auto;
+        animation: float 3s ease-in-out infinite;
+
+
+        & > input {
+            border: none;
+            background: none;
+            outline: none;
+            width: 400px;
+            height: 100%;
+            padding-left: 12px;
+        }
+
+        & > button {
+            background: $secondary-color;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+   }
+}
+
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(0px); 
+    }
+    50% { 
+        transform: translateY(-10px); 
+    }
+}
+
+@media (max-width: 768px) {
+    .engage__inner__form input {
+        width: 300px;
+    }
+}

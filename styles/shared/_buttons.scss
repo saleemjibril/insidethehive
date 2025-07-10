@@ -68,3 +68,19 @@
   justify-content: center;
   gap: 8px;
 }
+
+.primary-button, %primary-button {
+  width: fit-content;
+  padding: 0 12px;
+  white-space: nowrap;
+  height: 48px;
+  border-radius: 24px;
+  font-size: 18px;
+  font-weight: 500;
+  background: #FFF;
+  border: none;
+color: #000;
+display: flex;
+align-items: center;
+gap: 8px;
+}

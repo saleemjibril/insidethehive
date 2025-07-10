@@ -1,12 +1,12 @@
 .spotify-component {
     width: 100%;
     max-width: 1192px;
-    padding: 0 20px;
+    padding: 60px 20px;
     margin: 0 auto;
 
     &__title {
-        font-size: 72px;
-        font-weight: 700;
+      @extend %title-72;
+      font-weight: 700;
         margin-bottom: 40px;
         width: 100%;
         max-width: 20ch;
@@ -14,9 +14,7 @@
         font-family: var(--font-durkwide);
 
         
-        @media (max-width: $phone) {
-          font-size: 48px;
-        }
+      
     
         & > span {
           color: $secondary-color;

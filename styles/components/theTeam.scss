@@ -1,0 +1,83 @@
+.home__design-tools {
+    width: 100%;
+    background: $secondary-color;
+    padding: 82px 0;
+    margin: 60px 0;
+
+   &__inner {
+    width: 100%;
+    max-width: 1352px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    @media (max-width: $tablet) {
+        flex-direction: column;
+        gap: 40px;
+    }
+   
+
+    &__card1 {
+        @extend %title-64;
+        width: 100%;
+        max-width: 8ch;
+        font-weight: 700;
+        text-align: right;
+        color: #17181B;
+
+        @media (max-width: $tablet) {
+            text-align: left;
+            max-width: 100%;
+        }
+       
+
+        & > span {
+            color: #FFF;
+        }
+    }
+
+    &__card2 {
+        display: flex;
+        flex-direction: column;
+        gap: 140px;
+
+        @media (max-width: $tablet) {
+            gap: 40px;
+        }
+        &__card {
+            width: 100%;
+            max-width: 660px;
+            padding: 32px;
+            border-radius: 15px;
+            box-shadow: 0px 2px 12px 0px #D021C51A;
+
+            @media (max-width: $tablet) {
+                max-width: 100%;
+            }
+
+box-shadow: 0px -2px 12px 0px #D021C51A;
+display: flex;
+align-items: center;
+gap: 24px;
+background: #17181B;
+cursor: pointer;
+
+&__title {
+    @extend %title-24;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #fff;
+}
+&__subtitle {
+   color: #737373;
+   font-weight: 500;
+}
+
+        }
+    }
+
+ 
+   }  
+}
