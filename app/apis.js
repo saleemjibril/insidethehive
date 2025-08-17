@@ -247,3 +247,18 @@ export const login = async (
     return error?.response;
   }
 };
+
+
+export const getCryptoPrices = async (
+) => {
+  try {
+    const res = await axios.get(
+      // `${process.env.REACT_APP_DEV_URL}/auth/login`, {
+      `${process.env.NEXT_PUBLIC_URL}/crypto`, );
+
+    return res;
+  } catch (error) {
+    console.log("ERROR", error);
+    return error?.response;
+  }
+};

@@ -29,6 +29,20 @@ export default function Footer() {
                             <Image src={"/assets/icons/rightArrow.svg"} width={18} height={18} />
                         </button>
                     </div>
+<div className="footer__inner__group__links-group">
+<div className="footer__inner__group__links">
+                    <div href="#" className="footer__inner__group__links__title">Bankless</div>
+          <div href="#" className="footer__inner__group__links__subtitle">Go Bankless</div>
+          <a href="#">Become a Citizen</a>
+          <a href="#">About Us</a>
+          <a href="#">Causes</a>
+          <a href="#">Merch</a>
+          <a href="#">Jobs</a>
+          <a href="#">Terms</a>
+          <a href="#">Privacy</a>
+          <a href="#">Advertise With Us</a>
+          <a href="#">Disclosures</a>
+                    </div>
 
                     <div className="footer__inner__group__links">
                     <a href="#latest">Latest Episode</a>
@@ -36,6 +50,8 @@ export default function Footer() {
           <a href="#all">All Episodes</a>
           <a href="#articles">Articles</a>
                     </div>
+                   
+</div>
                 </div>
 
             {/* <Image className="footer__inner__bg" src={"/assets/footer-bg.svg"} width={1440} height={224} /> */}

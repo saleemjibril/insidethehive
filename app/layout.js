@@ -3,6 +3,7 @@ import { Inter, Syne, Geist } from "next/font/google";
 import localFont from "next/font/local";
 import Header from "./components/header";
 import ReduxProvider from "./store/ReduxProvider";
+import CryptoPriceTicker from "./components/cryptoPrices";
 
 const silkFlower = localFont({
   src: "../public/assets/SilkFlower.woff2",
@@ -47,6 +48,8 @@ export default function RootLayout({ children }) {
        ${syne.variable} ${inter.variable} ${geist.variable} ${durkWide.variable} ${silkFlower.variable}`}
     >
       <body>
+            <CryptoPriceTicker />
+
         <Header />
         <ReduxProvider>{children}</ReduxProvider>
       </body>
