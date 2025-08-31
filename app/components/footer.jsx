@@ -32,16 +32,14 @@ export default function Footer() {
 <div className="footer__inner__group__links-group">
 <div className="footer__inner__group__links">
                     <div href="#" className="footer__inner__group__links__title">Bankless</div>
-          <div href="#" className="footer__inner__group__links__subtitle">Go Bankless</div>
-          <a href="#">Become a Citizen</a>
-          <a href="#">About Us</a>
-          <a href="#">Causes</a>
-          <a href="#">Merch</a>
-          <a href="#">Jobs</a>
-          <a href="#">Terms</a>
-          <a href="#">Privacy</a>
-          <a href="#">Advertise With Us</a>
-          <a href="#">Disclosures</a>
+          <a href="/enter-the-hive">Enter the Hive</a>
+          <a href="/become-a-citizen">Become a Citizen</a>
+          <a href="/about-us">About Us</a>
+          <a href="/causes">Causes</a>
+          <a href="/merch">Merch</a>
+          <a href="/jobs">Jobs</a>
+          <a href="/advertise-with-us">Advertise With Us</a>
+          <a href="/disclosures">Disclosures</a>
                     </div>
 
                     <div className="footer__inner__group__links">
