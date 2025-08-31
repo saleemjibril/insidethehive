@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { getCryptoPrices } from '../apis';
 
 const CryptoPriceTicker = ({ 
-  symbols = ['bitcoin', 'ethereum', 'binancecoin', 'cardano', 'solana', 'polkadot', 'chainlink', 'polygon', 'avalanche-2', 'uniswap'],
+  symbols = ['bitcoin', 'ethereum', 'binancecoin', 'avalanche-2', 'solana', 'sui', 'polkadot', 'the-open-network', 'chainlink', 'tether', 'usd-coin', 'dogecoin'],
   updateInterval = 60000, // 1 minute
   animationSpeed = 50 // seconds for full scroll
 }) => {
@@ -53,13 +53,15 @@ const CryptoPriceTicker = ({
       'bitcoin': 'Bitcoin',
       'ethereum': 'Ethereum',
       'binancecoin': 'BNB',
-      'cardano': 'Cardano',
-      'solana': 'Solana',
-      'polkadot': 'Polkadot',
-      'chainlink': 'Chainlink',
-      'polygon': 'Polygon',
       'avalanche-2': 'Avalanche',
-      'uniswap': 'Uniswap'
+      'solana': 'Solana',
+      'sui': 'Sui',
+      'polkadot': 'Polkadot',
+      'the-open-network': 'Toncoin',
+      'chainlink': 'Chainlink',
+      'tether': 'Tether',
+      'usd-coin': 'USD Coin',
+      'dogecoin': 'Dogecoin'
     };
     return nameMap[id] || id.charAt(0).toUpperCase() + id.slice(1);
   };
@@ -70,13 +72,15 @@ const CryptoPriceTicker = ({
       'bitcoin': 'BTC',
       'ethereum': 'ETH',
       'binancecoin': 'BNB',
-      'cardano': 'ADA',
-      'solana': 'SOL',
-      'polkadot': 'DOT',
-      'chainlink': 'LINK',
-      'polygon': 'MATIC',
       'avalanche-2': 'AVAX',
-      'uniswap': 'UNI'
+      'solana': 'SOL',
+      'sui': 'SUI',
+      'polkadot': 'DOT',
+      'the-open-network': 'TON',
+      'chainlink': 'LINK',
+      'tether': 'USDT',
+      'usd-coin': 'USDC',
+      'dogecoin': 'DOGE'
     };
     return symbolMap[id] || id.toUpperCase().slice(0, 4);
   };
@@ -270,7 +274,6 @@ const CryptoPriceTicker = ({
           animation: scroll ${animationSpeed}s linear infinite;
           gap: 50px;
           align-items: center;
-          padding-left: 100vw;
         }
         
         .crypto-ticker__item {
