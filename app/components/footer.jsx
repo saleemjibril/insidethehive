@@ -5,14 +5,14 @@ export default function Footer() {
         <div className="footer">
             <div className="footer__inner">
                 <div className="footer__inner__title-group">
-                    <Image src="/assets/icons/logo-trans.svg" width={150} height={150} />
+                    <Image src="/assets/inside_the_hive.png" width={150} height={150} alt="Inside The Hive Logo" />
 
                     <div className="footer__inner__title-group__social-group">
-                        <Image src="/assets/icons/email.svg" width={32} height={32} />
-                        <Image src="/assets/icons/linkedin-footer.svg" width={32} height={32} />
-                        <Image src="/assets/icons/twitter-footer.svg" width={32} height={32} />
-                        <Image src="/assets/icons/tiktok-footer.svg" width={32} height={32} />
-                        <Image src="/assets/icons/instagram-footer.svg" width={32} height={32} />
+                        <Image src="/assets/icons/email.svg" width={32} height={32} alt="Email" />
+                        <Image src="/assets/icons/linkedin-footer.svg" width={32} height={32} alt="LinkedIn" />
+                        <Image src="/assets/icons/twitter-footer.svg" width={32} height={32} alt="Twitter" />
+                        <Image src="/assets/icons/tiktok-footer.svg" width={32} height={32} alt="TikTok" />
+                        <Image src="/assets/icons/instagram-footer.svg" width={32} height={32} alt="Instagram" />
 
                     </div>
                 </div>
@@ -26,7 +26,7 @@ export default function Footer() {
                         <button className="footer__inner__group__button">
                             Watch more
 
-                            <Image src={"/assets/icons/rightArrow.svg"} width={18} height={18} />
+                            <Image src={"/assets/icons/rightArrow.svg"} width={18} height={18} alt="Right Arrow" />
                         </button>
                     </div>
 <div className="footer__inner__group__links-group">

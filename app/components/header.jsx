@@ -212,7 +212,7 @@ export default function Header() {
     <>
       <header className="header" ref={headerRef}>
         <Link href="/" prefetch={true} className="header__logo" ref={logoRef}>
-          <Image alt="" src={"/assets/icons/logo-trans.svg"} width={80} height={80} />
+          <Image alt="" src={"/assets/inside_the_hive.png"} width={70} height={70} />
           <div>
           {/* Inside<span>TheHive</span> */}
           </div>
@@ -244,7 +244,7 @@ export default function Header() {
         <div className="header__sidebar" ref={sidebarRef}>
           <div className="header__sidebar__close" ref={sidebarCloseRef}>
              <Link href="/" prefetch={true} className="header__logo">
-          <Image alt="" src={"/assets/icons/logo-trans.svg"} width={100} height={100} />
+          <Image alt="" src={"/assets/inside_the_hive.png"} width={100} height={100} />
           <div>
           {/* Inside<span>TheHive</span> */}
           </div>

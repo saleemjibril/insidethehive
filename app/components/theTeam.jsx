@@ -144,7 +144,7 @@ export default function TheTeam() {
                         className="home__design-tools__inner__card2__card"
                         ref={addToRefs}
                     >
-                        <Image src={"/assets/feezy.jpg"} width={64} height={64} />
+                        <Image src={"/assets/feezy.jpg"} width={64} height={64} alt="Team Member" />
                         <div>
                             <div className="home__design-tools__inner__card2__card__title">
                                 Feezy
@@ -158,7 +158,7 @@ export default function TheTeam() {
                         className="home__design-tools__inner__card2__card"
                         ref={addToRefs}
                     >
-                        <Image src={"/assets/feezy.jpg"} width={64} height={64} />
+                        <Image src={"/assets/feezy.jpg"} width={64} height={64} alt="Team Member" />
                         <div>
                             <div className="home__design-tools__inner__card2__card__title">
                             Feezy
@@ -172,7 +172,7 @@ export default function TheTeam() {
                         className="home__design-tools__inner__card2__card"
                         ref={addToRefs}
                     >
-                        <Image src={"/assets/feezy.jpg"} width={64} height={64} />
+                        <Image src={"/assets/feezy.jpg"} width={64} height={64} alt="Team Member" />
                         <div>
                             <div className="home__design-tools__inner__card2__card__title">
                             Feezy
@@ -186,7 +186,7 @@ export default function TheTeam() {
                         className="home__design-tools__inner__card2__card"
                         ref={addToRefs}
                     >
-                        <Image src={"/assets/feezy.jpg"} width={64} height={64} />
+                        <Image src={"/assets/feezy.jpg"} width={64} height={64} alt="Team Member" />
                         <div>
                             <div className="home__design-tools__inner__card2__card__title">
                             Feezy
@@ -200,7 +200,7 @@ export default function TheTeam() {
                         className="home__design-tools__inner__card2__card"
                         ref={addToRefs}
                     >
-                        <Image src={"/assets/feezy.jpg"} width={64} height={64} />
+                        <Image src={"/assets/feezy.jpg"} width={64} height={64} alt="Team Member" />
                         <div>
                             <div className="home__design-tools__inner__card2__card__title">
                             Feezy

@@ -15,33 +15,31 @@ const CryptoPriceTicker = ({
 
   const fetchCryptoPrices = async () => {
     try {
-      const symbolsString = symbols.join(',');
       const response = await getCryptoPrices();
-
     console.log("getCryptoPrices", response);
 
-    //   const data = response?.data?.data?.cryptoPrices
+      // Handle the new response structure
+      if (response.error) {
+        setError(response.error);
+        setCryptoData([]);
+        return;
+      }
+
+      const cryptoPrices = response?.data?.data?.cryptoPrices;
       
-    //   // Transform data into array format
-    //   const transformedData = symbols.map(symbol => {
-    //     const coinData = data[symbol];
-    //     if (!coinData) return null;
-        
-    //     return {
-    //       id: symbol,
-    //       name: formatCoinName(symbol),
-    //       symbol: getSymbolAbbr(symbol),
-    //       price: coinData.usd,
-    //       change24h: coinData.usd_24h_change || 0,
-    //       marketCap: coinData.usd_market_cap
-    //     };
-    //   }).filter(Boolean);
-      
-      setCryptoData(response?.data?.data?.cryptoPrices);
+      // Ensure cryptoPrices is an array before setting it
+      if (Array.isArray(cryptoPrices)) {
+        setCryptoData(cryptoPrices);
       setError(null);
+      } else {
+        console.warn('Crypto prices data is not in expected format:', cryptoPrices);
+        setCryptoData([]);
+        setError('Invalid data format received');
+      }
     } catch (err) {
       console.error('Error fetching crypto prices:', err);
-      setError(err.message);
+      setError(err.message || 'Failed to fetch crypto prices');
+      setCryptoData([]);
     } finally {
       setLoading(false);
     }
@@ -210,7 +208,81 @@ const CryptoPriceTicker = ({
   }
 
   // Duplicate the data to ensure seamless scrolling
-  const duplicatedData = [...cryptoData, ...cryptoData];
+  // Ensure cryptoData is an array before spreading
+  const duplicatedData = Array.isArray(cryptoData) && cryptoData.length > 0 
+    ? [...cryptoData, ...cryptoData] 
+    : [];
+
+  // If no data available, show a message
+  if (!loading && !error && duplicatedData.length === 0) {
+    return (
+      <div className="crypto-ticker">
+        <div className="crypto-ticker__container">
+          <div className="crypto-ticker__scroll">
+            <div className="crypto-ticker__item">
+              <div className="crypto-ticker__item__main">
+                <span className="crypto-ticker__item__symbol">No Data</span>
+                <span className="crypto-ticker__item__price">Available</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <style jsx>{`
+          .crypto-ticker {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            border-bottom: 2px solid #FFD700;
+            overflow: hidden;
+            position: relative;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          
+          .crypto-ticker__container {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          
+          .crypto-ticker__scroll {
+            display: flex;
+            align-items: center;
+          }
+          
+          .crypto-ticker__item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px 20px;
+            background: rgba(255, 215, 0, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+          }
+          
+          .crypto-ticker__item__main {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+          }
+          
+          .crypto-ticker__item__symbol {
+            color: #FFD700;
+            font-weight: bold;
+            font-size: 14px;
+          }
+          
+          .crypto-ticker__item__price {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 14px;
+          }
+        `}</style>
+      </div>
+    );
+  }
 
   return (
     <div className="crypto-ticker">

@@ -1,4 +1,5 @@
 
+import Image from "next/image";
 import Footer from "../components/footer";
 
 export async function generateMetadata() {
@@ -14,7 +15,7 @@ export default function Merch() {
     <>
       <div className="merch">
         <div className="merch__hero">
-          <div className="merch__hero__image-placeholder"></div>
+          <Image className="merch__hero__image" src="/assets/Merch.png" width={500} height={500} alt="Merch - Community engagement background" />
           <div className="merch__hero__inner">
             <h1 className="merch__hero__inner__title">Merch</h1>
             <p className="merch__hero__inner__subtitle">

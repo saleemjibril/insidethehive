@@ -46,6 +46,7 @@ export default function Episode() {
               width={40}
               height={40}
               src="/assets/icons/applePodcast.svg"
+              alt="Apple Podcasts"
             />
           </div>
         </div>

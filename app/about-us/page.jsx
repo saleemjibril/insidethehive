@@ -1,4 +1,5 @@
 
+import Image from "next/image";
 import Footer from "../components/footer";
 
 export async function generateMetadata() {
@@ -14,8 +15,8 @@ export default function AboutUs() {
     <>
       <div className="about-us">
         <div className="about-us__hero">
-          <div className="about-us__hero__image-placeholder"></div>
-          <div className="about-us__hero__inner">
+        <Image className="about-us__hero__image" src="/assets/About Us.png" width={500} height={500} alt="About Us - Community engagement background" />
+        <div className="about-us__hero__inner">
             <h1 className="about-us__hero__inner__title">About <span>Us</span></h1>
             <p className="about-us__hero__inner__subtitle">
               We are storytellers, gamers, and creators with a mission to inspire Web3 adoption in Africa and beyond. Through our podcast, media platforms, events and community spaces, we highlight the builders shaping the future, share knowledge that empowers, spark conversations that matter and give everyone a reason to be part of this growing ecosystem. 

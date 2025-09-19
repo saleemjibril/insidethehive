@@ -1,4 +1,4 @@
-
+import Image from "next/image";
 import Footer from "../components/footer";
 
 export async function generateMetadata() {
@@ -14,7 +14,7 @@ export default function Causes() {
     <>
       <div className="causes">
         <div className="causes__hero">
-          <div className="causes__hero__image-placeholder"></div>
+          <Image className="causes__hero__image" src="/assets/About Us.png" width={500} height={500} alt="Causes - Community engagement background" />
           <div className="causes__hero__inner">
             <h1 className="causes__hero__inner__title">Causes</h1>
             <p className="causes__hero__inner__subtitle">

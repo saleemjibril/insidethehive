@@ -5,7 +5,13 @@ import axios from "axios";
 export const getArticlesx = async () => {
   console.log("my requeste!", process.env.NEXT_PUBLIC_URL);
   
- try {
+  // Check if URL is available
+  if (!process.env.NEXT_PUBLIC_URL) {
+    console.error("NEXT_PUBLIC_URL is not defined");
+    return { data: [], error: "Configuration error: API URL not found" };
+  }
+  
+  try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/article`, {
       next: {
         revalidate: 3600 // Revalidate every hour
@@ -16,10 +22,15 @@ export const getArticlesx = async () => {
       throw new Error(`HTTP error! status: ${res.status}`);
     }
     
-    return res.json();
+    const data = await res.json();
+    return { data, error: null };
   } catch (error) {
     console.error("FAILED ERROR", error);
-    throw error;
+    // Return empty data structure instead of throwing
+    return { 
+      data: [], 
+      error: error.message || "Failed to fetch articles. Please try again later." 
+    };
   }
 };
 
@@ -249,16 +260,22 @@ export const login = async (
 };
 
 
-export const getCryptoPrices = async (
-) => {
+export const getCryptoPrices = async () => {
+  // Check if URL is available
+  if (!process.env.NEXT_PUBLIC_URL) {
+    console.error("NEXT_PUBLIC_URL is not defined");
+    return { data: { data: { cryptoPrices: [] } }, error: "Configuration error: API URL not found" };
+  }
+  
   try {
-    const res = await axios.get(
-      // `${process.env.REACT_APP_DEV_URL}/auth/login`, {
-      `${process.env.NEXT_PUBLIC_URL}/crypto`, );
-
-    return res;
+    const res = await axios.get(`${process.env.NEXT_PUBLIC_URL}/crypto`);
+    return { data: res.data, error: null };
   } catch (error) {
-    console.log("ERROR", error);
-    return error?.response;
+    console.error("ERROR fetching crypto prices:", error);
+    // Return empty data structure instead of error response
+    return { 
+      data: { data: { cryptoPrices: [] } }, 
+      error: error.message || "Failed to fetch crypto prices. Please try again later." 
+    };
   }
 };
