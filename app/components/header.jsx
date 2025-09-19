@@ -250,7 +250,7 @@ export default function Header() {
         ref={headerRef}
       >
         <Link href="/" prefetch={true} className="header__logo" ref={logoRef}>
-          <Image alt="" src={"/assets/inside_the_hive.png"} width={70} height={70} />
+          <Image alt="" src={"/assets/inside_the_hive.png"} width={80} height={80} />
           <div>
           {/* Inside<span>TheHive</span> */}
           </div>

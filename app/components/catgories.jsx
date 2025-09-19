@@ -12,9 +12,9 @@ export default function Categories() {
             image: '/assets/blockchain1.jpg',
             letters: ['B', 'L', 'O', 'C', 'K', 'C', 'H', 'A', 'I', 'N'],
             colors: {
-                title: '#a2fbfa',
-                button: '#a2fbfa',
-                brand: '#bb44a2'
+                title: '#fff',
+                button: '#fff',
+                brand: '#fff'
             }
         },
         {
@@ -22,9 +22,9 @@ export default function Categories() {
             image: '/assets/cryptopayment4.jpg',
             letters: ['C', 'R', 'Y', 'P', 'T', 'O', '', '', 'P', 'A', 'Y', 'M', 'E', 'N', 'T', 'S'],
             colors: {
-                title: '#c0aaa2',
+                title: '#fff',
                 button: '#fff',
-                brand: '#719301'
+                brand: '#fff'
             }
         },
         {
