@@ -23,7 +23,7 @@ export default function Categories() {
             letters: ['C', 'R', 'Y', 'P', 'T', 'O', '', '', 'P', 'A', 'Y', 'M', 'E', 'N', 'T', 'S'],
             colors: {
                 title: '#c0aaa2',
-                button: '#63517d',
+                button: '#fff',
                 brand: '#719301'
             }
         },

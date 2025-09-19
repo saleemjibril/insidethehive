@@ -51,14 +51,15 @@
     
         &__card {
             position: relative;
-            padding: 48px 32px;
+            padding: 20px;
             background: #17171c;
-            border-radius: 15px;
+            border-radius: 34px;
+            height: fit-content;
     
             &__number {
                 @extend %title-48;
                 font-weight: 500;
-                margin-bottom: 64px;
+                margin-bottom: px;
                 color: #dbdbe1;
             }
     

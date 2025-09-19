@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const headerRef = useRef(null);
   const logoRef = useRef(null);
   const navRef = useRef(null);
@@ -20,7 +21,12 @@ export default function Header() {
     const tl = gsap.timeline();
     
     // Set initial states
-    gsap.set(headerRef.current, { y: -100, opacity: 0 });
+    gsap.set(headerRef.current, { 
+      y: -100, 
+      opacity: 0,
+      backgroundColor: '#1a1a2e',
+      backdropFilter: 'blur(0px)'
+    });
     gsap.set([logoRef.current, navRef.current, buttonsRef.current, hamburgerRef.current], { 
       opacity: 0, 
       y: 20 
@@ -139,6 +145,35 @@ export default function Header() {
 
   }, []);
 
+  // Scroll detection effect
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const shouldBeScrolled = scrollY > 50;
+      
+      if (shouldBeScrolled !== isScrolled) {
+        setIsScrolled(shouldBeScrolled);
+        
+        // Animate the background change with GSAP
+        if (headerRef.current) {
+          gsap.to(headerRef.current, {
+            backgroundColor: shouldBeScrolled ? 'rgba(26, 26, 46, 0.5)' : '#1a1a2e',
+            backdropFilter: shouldBeScrolled ? 'blur(10px)' : 'blur(0px)',
+            duration: 0.3,
+            ease: "power2.out"
+          });
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isScrolled]);
+
   // Sidebar animation effect
   useEffect(() => {
     if (open) {
@@ -210,7 +245,10 @@ export default function Header() {
 
   return (
     <>
-      <header className="header" ref={headerRef}>
+      <header 
+        className="header" 
+        ref={headerRef}
+      >
         <Link href="/" prefetch={true} className="header__logo" ref={logoRef}>
           <Image alt="" src={"/assets/inside_the_hive.png"} width={70} height={70} />
           <div>

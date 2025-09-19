@@ -29,10 +29,18 @@ export default function Engage() {
                 <div>S</div>
             </div> */}
             <div className="engage__inner__social-group">
-            <Image src="/assets/icons/instagram.svg" width={40} height={40} alt="Instagram" />
-            <Image src="/assets/icons/twitter.svg" width={40} height={40} alt="Twitter" />
-            <Image src="/assets/icons/tiktok.svg" width={40} height={40} alt="TikTok" />
-            <Image src="/assets/icons/linkedin.svg" width={40} height={40} alt="LinkedIn" />
+            <a href="https://instagram.com/insidedhive" target="_blank" rel="noopener noreferrer">
+                <Image src="/assets/icons/instagram.svg" width={40} height={40} alt="Instagram" />
+            </a>
+            <a href="https://twitter.com/insidedhive" target="_blank" rel="noopener noreferrer">
+                <Image src="/assets/icons/twitter.svg" width={40} height={40} alt="Twitter" />
+            </a>
+            <a href="https://tiktok.com/@insidedhive" target="_blank" rel="noopener noreferrer">
+                <Image src="/assets/icons/tiktok.svg" width={40} height={40} alt="TikTok" />
+            </a>
+            <a href="https://linkedin.com/company/insidedhive" target="_blank" rel="noopener noreferrer">
+                <Image src="/assets/icons/linkedin.svg" width={40} height={40} alt="LinkedIn" />
+            </a>
             </div>
            
             </div>

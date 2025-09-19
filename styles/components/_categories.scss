@@ -150,6 +150,7 @@
     
     .categories__card__title {
         font-size: 40px;
+        justify-content: center;
     }
     
     .categories__card__button-group {
@@ -182,5 +183,13 @@
     .categories__card__button-group {
         opacity: 1;
         transform: none;
+    }
+}
+
+
+@media (max-width: 565px) {
+.categories__card__title {
+        font-size: 32px;
+        justify-content: center;
     }
 }
