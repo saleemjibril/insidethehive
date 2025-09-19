@@ -8,7 +8,11 @@ export default function ListenOn() {
             Listen to us on
         </div>
       <div className="listen-on__cards">
-        <div className="listen-on__cards__card">
+        <div className="listen-on__cards__card"
+        onClick={() => {
+          window.open("https://youtube.com/@insidedhive?si=kxGC7cIvatUz3-ES", "_blank", "noopener,noreferrer");
+        }}
+        >
           <Image width={30} alt="" height={30} src="/assets/icons/youtube-white.svg" />
           <div>Youtube</div>
         </div>

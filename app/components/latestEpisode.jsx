@@ -429,8 +429,16 @@ export default function LatestEpisode({
             </div>
 
             <div className="latest-episode__icons" ref={iconsRef}>
-                <Image width={40} height={40} alt="" src="/assets/icons/youtube.svg" />
-                <Image width={40} height={40} alt="" src="/assets/icons/spotify.svg" />
+                <Image width={40} height={40} alt="" src="/assets/icons/youtube.svg"
+                 onClick={() => {
+                    window.open("https://youtube.com/@insidedhive?si=kxGC7cIvatUz3-ES", "_blank", "noopener,noreferrer");
+                  }}
+                />
+                <Image width={40} height={40} alt="" src="/assets/icons/spotify.svg"
+                onClick={() => {
+                    window.open("https://open.spotify.com/show/0wOOX8mdQUoRP1adnxV9VD?si=69aa0fcb14ce4e88", "_blank", "noopener,noreferrer");
+                  }}
+                />
                 <Image width={35} height={38} alt="" src="/assets/icons/castBox.png" />
                 <Image width={45} height={25} alt="" src="/assets/icons/soundclouds.png" />
                 <Image width={40} height={40} alt="" src="/assets/icons/applePodcast.svg" />
