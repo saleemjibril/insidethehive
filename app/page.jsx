@@ -21,7 +21,7 @@ export async function generateMetadata() {
   return {
     title: "Home",
     description:
-      "Project Management, Engineering Construction & Design, Supply of Integrated Services, Supervision, Environmental Consultancy",
+      "A weekly podcast journey presenting innovative, motivating tales with creates, startups and individuals inform listener about blockchain technology and the Web3 space.",
   };
 }
 
