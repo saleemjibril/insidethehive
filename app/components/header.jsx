@@ -257,7 +257,7 @@ export default function Header() {
         </Link>
 
         <nav ref={navRef}>
-          <a href="#latest">Latest Episode</a>
+          <a href="#latest">Latest Episodes</a>
           <a href="#popular">Popular Episodes</a>
           <a href="#all">All Episodes</a>
           <a href="#articles">Articles</a>
