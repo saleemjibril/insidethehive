@@ -27,6 +27,13 @@
             border-radius: 8px;
             background: rgb(122, 122, 39);
             padding: 20px;
+            cursor: pointer;
+            transition: 0.2s;
+
+            &:hover {
+                scale: 1.05;
+                transition: 0.2s;
+            }
 
             & > img {
                 margin-bottom: 10px;

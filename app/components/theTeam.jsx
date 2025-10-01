@@ -150,66 +150,11 @@ export default function TheTeam() {
                                 Feezy
                             </div>
                             <div className="home__design-tools__inner__card2__card__subtitle">
-                            Lorem ipsum is a dummy or placeholder text commonly
+                            Founder, InsideDHive and Operations Manager for Avalanche Nigeria
                             </div>
                         </div>
                     </div>
-                    <div 
-                        className="home__design-tools__inner__card2__card"
-                        ref={addToRefs}
-                    >
-                        <Image src={"/assets/feezy.jpg"} width={64} height={64} alt="Team Member" />
-                        <div>
-                            <div className="home__design-tools__inner__card2__card__title">
-                            Feezy
-                            </div>
-                            <div className="home__design-tools__inner__card2__card__subtitle">
-                            Lorem ipsum is a dummy or placeholder text commonly
-                            </div>
-                        </div>
-                    </div>
-                    <div 
-                        className="home__design-tools__inner__card2__card"
-                        ref={addToRefs}
-                    >
-                        <Image src={"/assets/feezy.jpg"} width={64} height={64} alt="Team Member" />
-                        <div>
-                            <div className="home__design-tools__inner__card2__card__title">
-                            Feezy
-                            </div>
-                            <div className="home__design-tools__inner__card2__card__subtitle">
-                            Lorem ipsum is a dummy or placeholder text commonly
-                            </div>
-                        </div>
-                    </div>
-                    <div 
-                        className="home__design-tools__inner__card2__card"
-                        ref={addToRefs}
-                    >
-                        <Image src={"/assets/feezy.jpg"} width={64} height={64} alt="Team Member" />
-                        <div>
-                            <div className="home__design-tools__inner__card2__card__title">
-                            Feezy
-                            </div>
-                            <div className="home__design-tools__inner__card2__card__subtitle">
-                            Lorem ipsum is a dummy or placeholder text commonly
-                            </div>
-                        </div>
-                    </div>
-                    <div 
-                        className="home__design-tools__inner__card2__card"
-                        ref={addToRefs}
-                    >
-                        <Image src={"/assets/feezy.jpg"} width={64} height={64} alt="Team Member" />
-                        <div>
-                            <div className="home__design-tools__inner__card2__card__title">
-                            Feezy
-                            </div>
-                            <div className="home__design-tools__inner__card2__card__subtitle">
-                            Lorem ipsum is a dummy or placeholder text commonly
-                            </div>
-                        </div>
-                    </div>
+                  
                 </div>
             </div>
         </div>

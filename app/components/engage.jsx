@@ -1,6 +1,42 @@
+"use client";
 import Image from "next/image";
+import { useState } from "react";
+import { sendEmail } from "../utils/emailService";
+import { toast } from "react-toastify";
 
 export default function Engage() {
+    const [comment, setComment] = useState("");
+    const [loading, setLoading] = useState(false);
+
+    const handleSubmit = async (e) => {
+        console.log("got hit");
+        
+        e.preventDefault();
+        console.log(comment);
+        setLoading(true);
+        try {
+            const response = await sendEmail({
+                from_name: "An anoymous listener",
+                message: comment,
+                reply_to: "insidethehivepod@gmail.com",
+                email: "insidethehivepod@gmail.com",
+              });
+            setComment(""); 
+            toast.success("Thank you for reaching out! We'll be in touch soon.", {
+                style: {
+                  background: '#FFD700',
+                  accentColor: '#FFD700',
+                  color: '#000' // text color for contrast
+                }
+              });
+            setLoading(false);
+        } catch (error) {
+            console.log(error);
+            toast.error("Oops! Something went wrong. Let's try that again 🙂");
+        } finally {
+            setLoading(false);
+        }
+    }
     return (
         <div className="engage">
 
@@ -41,6 +77,9 @@ export default function Engage() {
             <a href="https://linkedin.com/company/insidedhive" target="_blank" rel="noopener noreferrer">
                 <Image src="/assets/icons/linkedin.svg" width={40} height={40} alt="LinkedIn" />
             </a>
+            <a href="https://t.me/insidethehive" target="_blank" rel="noopener noreferrer">
+                <Image src="/assets/icons/telegram.svg" width={40} height={40} alt="LinkedIn" />
+            </a>
             </div>
            
             </div>
@@ -48,9 +87,9 @@ export default function Engage() {
 <div className="engage__inner__subtitle">
                 Engage with us through our social media or leave us a comment here
             </div>
-           <form action="" className="engage__inner__form">
-           <input type="text" placeholder="Leave a comment for use here" />
-            <button>
+           <form action="" className="engage__inner__form" onSubmit={handleSubmit}>
+           <input type="text" placeholder="Leave a comment for use here" value={comment} onChange={(e) => setComment(e.target.value)}/>
+            <button type="submit">
             <Image src="/assets/icons/rightArrow.svg" width={20} height={20} alt="Submit" />
             </button>
            </form>

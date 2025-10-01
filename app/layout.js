@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import Header from "./components/header";
 import ReduxProvider from "./store/ReduxProvider";
 import CryptoPriceTicker from "./components/cryptoPrices";
+import { Toast } from './toast';
 
 const silkFlower = localFont({
   src: "../public/assets/SilkFlower.woff2",
@@ -51,6 +52,8 @@ export default function RootLayout({ children }) {
             <CryptoPriceTicker />
 
         <Header />
+        <Toast />
+
         <ReduxProvider>{children}</ReduxProvider>
       </body>
     </html>

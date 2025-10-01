@@ -23,6 +23,9 @@ export default function Footer() {
                         <a href="https://instagram.com/insidedhive" target="_blank" rel="noopener noreferrer">
                             <Image src="/assets/icons/instagram-footer.svg" width={32} height={32} alt="Instagram" />
                         </a>
+                        <a href="https://t.me/insidethehive" target="_blank" rel="noopener noreferrer">
+                            <Image src="/assets/icons/telegram.svg" width={32} height={32} alt="LinkedIn" />
+                        </a>
 
                     </div>
                 </div>

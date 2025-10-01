@@ -24,7 +24,11 @@ export default function ListenOn() {
           <Image width={30} alt="" height={30} src="/assets/icons/spotify.svg" />
           <div>Spotify</div>
         </div>
-        <div className="listen-on__cards__card">
+        <div className="listen-on__cards__card"
+          onClick={() => {
+              window.open("https://podcasts.apple.com/ng/podcast/inside-the-hive-with-feezy/id1573472099", "_blank", "noopener,noreferrer");
+            }}
+        >
           <Image width={30} alt="" height={30} src="/assets/icons/applePodcast.svg" />
           <div>Apple Podcasts</div>
         </div>
