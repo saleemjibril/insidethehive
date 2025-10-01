@@ -94,6 +94,13 @@
             justify-content: center;
             width: 30px;
             height: 30px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+
+            &:disabled {
+                opacity: 0.6;
+                cursor: not-allowed;
+            }
         }
     }
 
@@ -107,6 +114,24 @@
     50% { 
         transform: translateY(-10px); 
     }
+}
+
+@keyframes spin {
+    0% { 
+        transform: rotate(0deg); 
+    }
+    100% { 
+        transform: rotate(360deg); 
+    }
+}
+
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    border-top: 2px solid #000000;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
 }
 
 @media (max-width: 768px) {

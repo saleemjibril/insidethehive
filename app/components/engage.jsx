@@ -89,8 +89,12 @@ export default function Engage() {
             </div>
            <form action="" className="engage__inner__form" onSubmit={handleSubmit}>
            <input type="text" placeholder="Leave a comment for use here" value={comment} onChange={(e) => setComment(e.target.value)}/>
-            <button type="submit">
-            <Image src="/assets/icons/rightArrow.svg" width={20} height={20} alt="Submit" />
+            <button type="submit" disabled={loading}>
+            {loading ? (
+                <div className="spinner"></div>
+            ) : (
+                <Image src="/assets/icons/rightArrow.svg" width={20} height={20} alt="Submit" />
+            )}
             </button>
            </form>
 </div>
