@@ -11,15 +11,15 @@ export default function Footer() {
                         <a href="mailto:contact@insidedhive.com" target="_blank" rel="noopener noreferrer">
                             <Image src="/assets/icons/email.svg" width={32} height={32} alt="Email" />
                         </a>
-                        <a href="https://linkedin.com/company/insidedhive" target="_blank" rel="noopener noreferrer">
+                        {/* <a href="https://linkedin.com/company/insidedhive" target="_blank" rel="noopener noreferrer">
                             <Image src="/assets/icons/linkedin-footer.svg" width={32} height={32} alt="LinkedIn" />
-                        </a>
+                        </a> */}
                         <a href="https://twitter.com/insidedhive" target="_blank" rel="noopener noreferrer">
                             <Image src="/assets/icons/twitter-footer.svg" width={32} height={32} alt="Twitter" />
                         </a>
-                        <a href="https://tiktok.com/@insidedhive" target="_blank" rel="noopener noreferrer">
+                        {/* <a href="https://tiktok.com/@insidedhive" target="_blank" rel="noopener noreferrer">
                             <Image src="/assets/icons/tiktok-footer.svg" width={32} height={32} alt="TikTok" />
-                        </a>
+                        </a> */}
                         <a href="https://instagram.com/insidedhive" target="_blank" rel="noopener noreferrer">
                             <Image src="/assets/icons/instagram-footer.svg" width={32} height={32} alt="Instagram" />
                         </a>
@@ -44,7 +44,7 @@ export default function Footer() {
                     </div>
 <div className="footer__inner__group__links-group">
 <div className="footer__inner__group__links">
-                    <div href="#" className="footer__inner__group__links__title">Bankless</div>
+                    {/* <div href="#" className="footer__inner__group__links__title">Bankless</div> */}
           <a href="/enter-the-hive">Enter the Hive</a>
           <a href="/become-a-citizen">Become a Citizen</a>
           <a href="/about-us">About Us</a>
@@ -60,6 +60,7 @@ export default function Footer() {
           <a href="#popular">Popular Episodes</a>
           <a href="#all">All Episodes</a>
           <a href="#articles">Articles</a>
+          <a href="https://drive.google.com/drive/folders/10Fhr7YT0zCkxYTNOEG3ZOcL_9IohWmEN?usp=drive_link" target="_blank" rel="noopener noreferrer">Branding Kit</a>
                     </div>
                    
 </div>

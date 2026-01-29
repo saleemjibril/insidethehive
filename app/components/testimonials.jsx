@@ -1,183 +1,230 @@
 "use client";
-// Maybe use people's tweets?
+
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-const testimonialsLeft = [
-  {
-    testimonial:
-      "TweetScraper has been a gamechanger for our email outreach - we've seen amazing results for our client's campaigns & it has allowed us to get data that we previously thought was impossible. 100% Recommend.",
-    title: "Episode title",
-    episode: "S1 . E3",
-    image: "/assets/podcast1.jpg",
-  },
-  {
-    testimonial:
-      "A lot of people fail with cold email because they use leads that have been scraped a million times over. Scraping Twitter gets you untouched lead lists. Getting a 79.5% open rate and 15.5% reply rate with TweetScraper.",
-    title: "Episode title",
-    episode: "S1 . E3",
-    image: "/assets/podcast2.jpg",
-  },
-  {
-    testimonial:
-      "Just upgraded my plan. Tool is incredible, used it to create a lookalike audience on Facebook - Acquired 66 SaaS clients for $7 each.",
-    title: "Episode title",
-    episode: "S1 . E3",
-    image: "/assets/podcast1.jpg",
-  },
-  {
-    testimonial:
-      "This is an amazing new way for lead generation that is way more efficient and productive than other tools because it leads you directly to the audiences of your dream customers. I couldn't be happier to have found TweetScraper!",
-    title: "Episode title",
-    episode: "S1 . E3",
-    image: "/assets/podcast2.jpg",
-  },
-  {
-    testimonial:
-      "TweetScraper lets you get creative and scrape audiences no one else is emailing. Plus, the customer service is next level!",
-    title: "Episode title",
-    episode: "S1 . E3",
-    image: "/assets/podcast1.jpg",
-  },
-  {
-    testimonial:
-      "TweetScraper got me a 23% response rate compared to 5% with everything else being exactly the same. Just the fact that these inboxes are generally less-crowded makes it a no-brainer option.",
-    title: "Episode title",
-    episode: "S1 . E3",
-    image: "/assets/podcast2.jpg",
-  },
-  {
-    testimonial:
-      "With Tweetscraper, we've tapped into fresh audiences that haven't been exhausted by countless emails. For those who need a smart, efficient solution that can enhance their marketing efforts, consider this.",
-    title: "Episode title",
-    episode: "S1 . E3",
-    image: "/assets/podcast1.jpg",
-  },
-  {
-    testimonial:
-      "I was tired of cold DM'ing people on Twitter as part of my lead gen strategy. With TweetScraper I can export valid email addresses from accounts on twitter and set them up in my email marketing funnels.",
-    title: "Episode title",
-    episode: "S1 . E3",
-    image: "/assets/podcast2.jpg",
-  },
-  {
-    testimonial:
-      "Saving at least 2-4 hours each week from searching manually for leads. Marko's amazing support, fast communication, and commitment to adding new features quickly has been incredible to work with",
-    title: "Episode title",
-    episode: "S1 . E3",
-    image: "/assets/podcast1.jpg",
-  },
-  {
-    testimonial:
-      "TweetScraper has been my best source of cold email leads so far. They helped me dial in my sources and keywords and I was able to achieve a 3.5% reply rate(mostly positive) as a cold email noob.",
-    title: "Episode title",
-    episode: "S1 . E3",
-    image: "/assets/podcast2.jpg",
-  },
-  {
-    testimonial:
-      "What impressed me the most was the ability to reach highly specific and quality clients within a certain niche. If you're someone who's involved in marketing strategy and growth, then I highly recommend giving it a try.",
-    title: "Episode title",
-    episode: "S1 . E3",
-    image: "/assets/podcast1.jpg",
-  },
-  {
-    testimonial:
-      "TweetScraper has really improved our Twitter marketing, boosting our ROAS by allowing precise targeting of engaged users and those with similar interests. We recommend it to any marketer seeking efficiency and impact.",
-    title: "Episode title",
-    episode: "S1 . E3",
-    image: "/assets/podcast2.jpg",
-  },
-];
-const testimonialsRight = [
-  {
-    testimonial:
-      "Tweetscraper is our platform of choice for scraping all things Twitter and we recommend it to all of our clients.",
-    title: "Episode title",
-    episode: "S1 . E3",
-    image: "/assets/podcast1.jpg",
-  },
-  {
-    testimonial:
-      "I've been consistently achieving open rates of over 70% on each dataset. Twitter outreach isn't widely adopted at the moment, making it an excellent avenue for lead generation. Plus, Marko's support has been exceptional.",
-    title: "Episode title",
-    episode: "S1 . E3",
-    image: "/assets/podcast2.jpg",
-  },
-  {
-    testimonial:
-      "It's let me extract valuable information from Twitter, making lead gen easy and efficient. Their customer service are always quick to respond and provide great support. I no longer need to rely on any other lead services.",
-    title: "Episode title",
-    episode: "S1 . E3",
-    image: "/assets/podcast1.jpg",
-  },
-  {
-    testimonial:
-      "As a startup, we're always looking for ways to get a competitive edge. TweetScraper has become our secret weapon. We're able to uncover leads that our competitors aren't reaching and craft hyper-personalized outreach based on Twitter activity.",
-    title: "Episode title",
-    episode: "S1 . E3",
-    image: "/assets/podcast2.jpg",
-  },
-  {
-    testimonial:
-      "TweetScraper is a great tool that I recommend to anyone doing outreach. The team is very helpful and responsive if you need any help.",
-    title: "Episode title",
-    episode: "S1 . E3",
-    image: "/assets/podcast1.jpg",
-  },
-  {
-    testimonial:
-      "I booked a call the first day I used leads from tweetscraper, and I'm excited to do more. It feels like an infinite leads source, with great targeting.",
-    title: "Episode title",
-    episode: "S1 . E3",
-    image: "/assets/podcast2.jpg",
-  },
-  {
-    testimonial:
-      "I've been using TweetScraper for quite a while now. It's the best solution for scraping Twitter accounts at the moment. With its convenient filters and impressive speed, it's been a game-changer for me!",
-    title: "Episode title",
-    episode: "S1 . E3",
-    image: "/assets/podcast1.jpg",
-  },
-  {
-    testimonial:
-      "Shoutout to Marko - Love using TweetScraper for all my Twitter scraping needs. Extremely easy to use, filtering with keywords and quality leads used for cold emailing.",
-    title: "Episode title",
-    episode: "S1 . E3",
-    image: "/assets/podcast2.jpg",
-  },
-  {
-    testimonial:
-      "This is an insane tool. Makes it really easy to target your ICP on twitter. Also has great resources to dial in your ICP.",
-    title: "Episode title",
-    episode: "S1 . E3",
-    image: "/assets/podcast1.jpg",
-  },
-  {
-    testimonial:
-      "TweetScraper has been a game-changer for my clients and our venture studio. Using competitor-based audience targeting, I've achieved CPCs as low as $0.15, significantly reducing our Cost per lead. This tool has consistently helped me create lookalike audiences that drive results across various industries.",
-    title: "Episode title",
-    episode: "S1 . E3",
-    image: "/assets/podcast2.jpg",
-  },
-  {
-    testimonial:
-      "Been using TweetScraper to scrape more leads for my appointment setter - finally removing myself from the boring tasks of building an agency, highly recommend it if you're tryna scale.",
-    title: "Episode title",
-    episode: "S1 . E3",
-    image: "/assets/podcast1.jpg",
-  },
-  {
-    testimonial:
-      "TweetScraper has been an invaluable treasure trove of new customers. By using keywords to identify high-intent leads, we've discovered a whole new source of revenue requiring very little time & effort to mine.",
-    title: "Episode title",
-    episode: "S1 . E3",
-    image: "/assets/podcast2.jpg",
-  },
-];
+// Skeleton Loader Component for Testimonials
+const TestimonialsSkeleton = ({ duplicateCount = 2 }) => {
+  const skeletonItems = Array(12).fill(null);
+  const duplicatedSkeletonItems = Array(duplicateCount).fill(skeletonItems).flat();
 
-export default function Testimonials() {
+  return (
+    <div className="testimonials">
+      <div className="testimonials__title">
+        <div className="testimonials__title__img">
+          <Image src="/assets/logo.png" width={20} height={20} alt="" />
+        </div>
+        Some comments from our latest episodes
+      </div>
+      
+      <div className="testimonials__slider testimonials__slider-left">
+        {duplicatedSkeletonItems.map((_, index) => (
+          <div className="testimonials__slider__card skeleton-card" key={`skeleton-left-${index}`}>
+            <div className="skeleton-text-1"></div>
+            <div className="skeleton-text-2"></div>
+            <div className="skeleton-text-3"></div>
+            <div className="skeleton-profile">
+              <div className="skeleton-avatar"></div>
+              <div className="skeleton-info">
+                <div className="skeleton-title"></div>
+                <div className="skeleton-subtitle"></div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div className="testimonials__slider testimonials__slider-right">
+        {duplicatedSkeletonItems.map((_, index) => (
+          <div className="testimonials__slider__card skeleton-card" key={`skeleton-right-${index}`}>
+            <div className="skeleton-text-1"></div>
+            <div className="skeleton-text-2"></div>
+            <div className="skeleton-text-3"></div>
+            <div className="skeleton-profile">
+              <div className="skeleton-avatar"></div>
+              <div className="skeleton-info">
+                <div className="skeleton-title"></div>
+                <div className="skeleton-subtitle"></div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <style jsx>{`
+        .skeleton-card {
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 12px;
+          padding: 20px;
+          cursor: default;
+          transition: none;
+        }
+        
+        .skeleton-card:hover {
+          transform: none;
+        }
+        
+        .skeleton-text-1, .skeleton-text-2, .skeleton-text-3 {
+          height: 14px;
+          background: linear-gradient(90deg, 
+            rgba(255, 255, 255, 0.1) 0%, 
+            rgba(255, 255, 255, 0.2) 50%, 
+            rgba(255, 255, 255, 0.1) 100%
+          );
+          background-size: 200% 100%;
+          animation: shimmer 2s infinite;
+          border-radius: 4px;
+          margin-bottom: 8px;
+        }
+        
+        .skeleton-text-1 { width: 100%; }
+        .skeleton-text-2 { width: 90%; animation-delay: 0.1s; }
+        .skeleton-text-3 { width: 75%; animation-delay: 0.2s; margin-bottom: 16px; }
+        
+        .skeleton-profile {
+          display: flex;
+          gap: 12px;
+          align-items: center;
+        }
+        
+        .skeleton-avatar {
+          width: 46px;
+          height: 46px;
+          border-radius: 50%;
+          background: linear-gradient(90deg, 
+            rgba(255, 255, 255, 0.1) 0%, 
+            rgba(255, 255, 255, 0.2) 50%, 
+            rgba(255, 255, 255, 0.1) 100%
+          );
+          background-size: 200% 100%;
+          animation: shimmer 2s infinite;
+          animation-delay: 0.3s;
+        }
+        
+        .skeleton-info {
+          flex: 1;
+        }
+        
+        .skeleton-title {
+          height: 14px;
+          width: 120px;
+          background: linear-gradient(90deg, 
+            rgba(255, 255, 255, 0.1) 0%, 
+            rgba(255, 255, 255, 0.2) 50%, 
+            rgba(255, 255, 255, 0.1) 100%
+          );
+          background-size: 200% 100%;
+          animation: shimmer 2s infinite;
+          border-radius: 4px;
+          margin-bottom: 6px;
+          animation-delay: 0.4s;
+        }
+        
+        .skeleton-subtitle {
+          height: 12px;
+          width: 60px;
+          background: linear-gradient(90deg, 
+            rgba(255, 255, 255, 0.1) 0%, 
+            rgba(255, 255, 255, 0.2) 50%, 
+            rgba(255, 255, 255, 0.1) 100%
+          );
+          background-size: 200% 100%;
+          animation: shimmer 2s infinite;
+          border-radius: 4px;
+          animation-delay: 0.5s;
+        }
+        
+        @keyframes shimmer {
+          0% {
+            background-position: -200% 0;
+          }
+          100% {
+            background-position: 200% 0;
+          }
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default function Testimonials({ 
+  clientId,
+  clientSecret,
+  showId,
+  maxEpisodes = 24 // How many episodes to fetch for comments
+}) {
+  const [episodes, setEpisodes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [token, setToken] = useState('');
   const [duplicateCount, setDuplicateCount] = useState(2);
+
+  // Get Spotify Access Token
+  useEffect(() => {
+    const getAccessToken = async () => {
+      try {
+        const tokenResponse = await fetch('https://accounts.spotify.com/api/token', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': 'Basic ' + btoa(`${clientId}:${clientSecret}`)
+          },
+          body: 'grant_type=client_credentials'
+        });
+
+        if (!tokenResponse.ok) {
+          throw new Error('Failed to get Spotify access token');
+        }
+
+        const tokenData = await tokenResponse.json();
+        setToken(tokenData.access_token);
+      } catch (err) {
+        console.error('Error getting Spotify token:', err);
+        setError('Authentication error: ' + err.message);
+        setLoading(false);
+      }
+    };
+
+    if (clientId && clientSecret && showId) {
+      getAccessToken();
+    }
+  }, [clientId, clientSecret, showId]);
+
+  // Fetch podcast episodes when token is available
+  useEffect(() => {
+    if (!token) return;
+    
+    fetchEpisodes();
+  }, [token, showId, maxEpisodes]);
+
+  const fetchEpisodes = async () => {
+    try {
+      setLoading(true);
+      
+      const response = await fetch(
+        `https://api.spotify.com/v1/shows/${showId}/episodes?limit=${maxEpisodes}&offset=0`, 
+        {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        }
+      );
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch podcast episodes');
+      }
+      
+      const data = await response.json();
+      console.log("Fetched episodes for testimonials:", data);
+      
+      setEpisodes(data.items);
+    } catch (err) {
+      console.error('Error fetching Spotify episodes:', err);
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     const calculateDuplicates = () => {
@@ -191,19 +238,92 @@ export default function Testimonials() {
     return () => window.removeEventListener("resize", calculateDuplicates);
   }, []);
 
-  const duplicatedItemsLeft = Array(duplicateCount)
-    .fill(testimonialsLeft)
-    .flat();
-  const duplicatedItemsRight = Array(duplicateCount)
-    .fill(testimonialsRight)
-    .flat();
+  // Helper function to truncate description for use as "comment"
+  const truncateDescription = (description, maxLength = 200) => {
+    if (!description) return "Great episode! Really enjoyed the insights shared.";
+    const stripped = description.replace(/<[^>]*>/g, ''); // Remove HTML tags
+    if (stripped.length <= maxLength) return stripped;
+    return stripped.substring(0, maxLength).trim() + '...';
+  };
+
+  // Helper function to get episode info
+  const getEpisodeInfo = (episode, index) => {
+    const seasonMatch = episode.name.match(/S(\d+)/i) || episode.description?.match(/Season (\d+)/i);
+    const episodeMatch = episode.name.match(/E(\d+)/i) || episode.description?.match(/Episode (\d+)/i);
+    
+    const season = seasonMatch ? seasonMatch[1] : '1';
+    const episodeNum = episodeMatch ? episodeMatch[1] : (episodes.length - index).toString();
+    
+    return `S${season} . E${episodeNum}`;
+  };
+
+  // Helper function to get podcast title
+  const getEpisodeTitle = (episodeName) => {
+    const words = episodeName.split(' ');
+    return words.length > 5 ? words.slice(0, 5).join(' ') + '...' : episodeName;
+  };
+
+  // Split episodes into left and right sliders
+  const splitEpisodes = () => {
+    if (episodes.length === 0) return { left: [], right: [] };
+    
+    const mid = Math.ceil(episodes.length / 2);
+    return {
+      left: episodes.slice(0, mid),
+      right: episodes.slice(mid)
+    };
+  };
+
+  const { left: episodesLeft, right: episodesRight } = splitEpisodes();
+  
+  const duplicatedItemsLeft = Array(duplicateCount).fill(episodesLeft).flat();
+  const duplicatedItemsRight = Array(duplicateCount).fill(episodesRight).flat();
 
   useEffect(() => {
+    if (episodesLeft.length > 0) {
     document.documentElement.style.setProperty(
       "--item-count",
-      testimonialsLeft.length
+        episodesLeft.length
+      );
+    }
+  }, [episodesLeft.length]);
+
+  // Show skeleton loader while loading
+  if (loading) {
+    return <TestimonialsSkeleton duplicateCount={duplicateCount} />;
+  }
+  
+  if (error) {
+    return (
+      <div className="testimonials">
+        <div className="testimonials__title">
+          <div className="testimonials__title__img">
+            <Image src="/assets/logo.png" width={20} height={20} alt="" />
+          </div>
+          Some comments from our latest episodes
+        </div>
+        <div className="testimonials__error">
+          Error loading episodes: {error}
+        </div>
+      </div>
     );
-  }, [testimonialsLeft.length]);
+  }
+  
+  if (episodes.length === 0) {
+    return (
+      <div className="testimonials">
+        <div className="testimonials__title">
+          <div className="testimonials__title__img">
+            <Image src="/assets/logo.png" width={20} height={20} alt="" />
+          </div>
+          Some comments from our latest episodes
+        </div>
+        <div className="testimonials__empty">
+          No episodes found
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="testimonials">
@@ -214,21 +334,36 @@ export default function Testimonials() {
         Some comments from our latest episodes
       </div>
       <div className="testimonials__slider testimonials__slider-left">
-        {duplicatedItemsLeft?.map((testimonial, index) => (
-          <div className="testimonials__slider__card" key={index}>
+        {duplicatedItemsLeft?.map((episode, index) => (
+          <div 
+            className="testimonials__slider__card" 
+            key={`${episode.id}-${index}`}
+            onClick={() => {
+              if (episode?.external_urls?.spotify) {
+                window.open(episode.external_urls.spotify, "_blank", "noopener,noreferrer");
+              }
+            }}
+            style={{ cursor: 'pointer' }}
+          >
             <div className="testimonials__slider__card__text">
-              {testimonial?.testimonial}
+              {truncateDescription(episode?.description)}
             </div>
 
             <div className="testimonials__slider__card__profile">
-              <Image src={testimonial?.image} width={46} height={46} alt="" />
+              <img 
+                src={episode?.images?.[0]?.url || '/assets/podcast1.jpg'} 
+                width={46} 
+                height={46} 
+                alt={episode?.name || 'Episode'} 
+                style={{ borderRadius: '50%', objectFit: 'cover' }}
+              />
 
               <div>
                 <div className="testimonials__slider__card__profile__title">
-                  {testimonial?.title}
+                  {getEpisodeTitle(episode?.name)}
                 </div>
                 <div className="testimonials__slider__card__profile__subtitle">
-                  {testimonial?.episode}
+                  {getEpisodeInfo(episode, index)}
                 </div>
               </div>
             </div>
@@ -236,24 +371,36 @@ export default function Testimonials() {
         ))}
       </div>
       <div className="testimonials__slider testimonials__slider-right">
-        {duplicatedItemsRight?.map((testimonial, index) => (
-          <div className="testimonials__slider__card" key={index}>
+        {duplicatedItemsRight?.map((episode, index) => (
+          <div 
+            className="testimonials__slider__card" 
+            key={`${episode.id}-${index}-right`}
+            onClick={() => {
+              if (episode?.external_urls?.spotify) {
+                window.open(episode.external_urls.spotify, "_blank", "noopener,noreferrer");
+              }
+            }}
+            style={{ cursor: 'pointer' }}
+          >
             <div className="testimonials__slider__card__text">
-              “TweetScraper has been a gamechanger for our email outreach -{" "}
-              <span>we've seen amazing results for our client's campaigns</span>{" "}
-              & it has allowed us to get data that we previously thought was
-              impossible. 100% Recommend.”
+              {truncateDescription(episode?.description)}
             </div>
 
             <div className="testimonials__slider__card__profile">
-              <Image src={testimonial?.image} width={46} height={46} alt="" />
+              <img 
+                src={episode?.images?.[0]?.url || '/assets/podcast2.jpg'} 
+                width={46} 
+                height={46} 
+                alt={episode?.name || 'Episode'} 
+                style={{ borderRadius: '50%', objectFit: 'cover' }}
+              />
 
               <div>
-              <div className="testimonials__slider__card__profile__title">
-                  {testimonial?.title}
+                <div className="testimonials__slider__card__profile__title">
+                  {getEpisodeTitle(episode?.name)}
                 </div>
                 <div className="testimonials__slider__card__profile__subtitle">
-                  {testimonial?.episode}
+                  {getEpisodeInfo(episode, index + episodesLeft.length)}
                 </div>
               </div>
             </div>

@@ -71,12 +71,12 @@ export default function Engage() {
             <a href="https://twitter.com/insidedhive" target="_blank" rel="noopener noreferrer">
                 <Image src="/assets/icons/twitter.svg" width={40} height={40} alt="Twitter" />
             </a>
-            <a href="https://tiktok.com/@insidedhive" target="_blank" rel="noopener noreferrer">
+            {/* <a href="https://tiktok.com/@insidedhive" target="_blank" rel="noopener noreferrer">
                 <Image src="/assets/icons/tiktok.svg" width={40} height={40} alt="TikTok" />
-            </a>
-            <a href="https://linkedin.com/company/insidedhive" target="_blank" rel="noopener noreferrer">
+            </a> */}
+            {/* <a href="https://linkedin.com/company/insidedhive" target="_blank" rel="noopener noreferrer">
                 <Image src="/assets/icons/linkedin.svg" width={40} height={40} alt="LinkedIn" />
-            </a>
+            </a> */}
             <a href="https://t.me/insidethehive" target="_blank" rel="noopener noreferrer">
                 <Image src="/assets/icons/telegram.svg" width={40} height={40} alt="LinkedIn" />
             </a>

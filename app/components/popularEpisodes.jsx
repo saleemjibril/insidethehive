@@ -225,6 +225,7 @@ export default function PopularEpisodes({
       }
       
       const data = await response.json();
+      console.log("found episodes:", data);
       
       // Sort episodes by popularity (using release date as proxy, newest first)
       const sortedEpisodes = data.items.sort((a, b) => 

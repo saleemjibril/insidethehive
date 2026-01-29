@@ -32,10 +32,18 @@ export default function ListenOn() {
           <Image width={30} alt="" height={30} src="/assets/icons/applePodcast.svg" />
           <div>Apple Podcasts</div>
         </div>
-        <div className="listen-on__cards__card">
+        <div className="listen-on__cards__card"
+         onClick={() => {
+          window.open("https://pocketcasts.com/podcasts/bc0339f0-b5c7-0139-f5f7-0acc26574db2", "_blank", "noopener,noreferrer");
+        }}
+        >
+          <Image width={30} alt="" height={30} src="/assets/icons/pocket.svg" />
+          <div>Pocket Casts</div>
+        </div>
+        {/* <div className="listen-on__cards__card">
           <Image width={30} alt="" height={30} src="/assets/icons/castBox.png" />
           <div>Cast Box</div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
