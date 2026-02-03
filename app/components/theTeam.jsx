@@ -65,15 +65,25 @@ export default function TheTeam() {
     const title = titleRef.current;
     const cards = cardsRef.current;
 
-    // Create a timeline
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: container,
-        start: "top 80%",
-        end: "bottom 20%",
-        toggleActions: "play none none reverse",
-      },
-    });
+    if (!container || !title || !cards.length) return;
+
+    // Use requestAnimationFrame to ensure DOM is ready
+    requestAnimationFrame(() => {
+      // Check if container is already in view (standalone page scenario)
+      const rect = container.getBoundingClientRect();
+      const isInView = rect.top < window.innerHeight * 0.8;
+
+      // Create a timeline
+      const tl = gsap.timeline({
+        scrollTrigger: isInView
+          ? null // No scroll trigger if already in view - will play immediately
+          : {
+              trigger: container,
+              start: "top 80%",
+              end: "bottom 20%",
+              toggleActions: "play none none reverse",
+            },
+      });
 
     // Animate the title
     tl.fromTo(
@@ -112,6 +122,7 @@ export default function TheTeam() {
       },
       "-=0.4" // Start slightly before title animation ends
     );
+    }); // End requestAnimationFrame
 
     // Add hover animations for cards
     cards.forEach((card, index) => {

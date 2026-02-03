@@ -40,6 +40,14 @@ export default function ListenOn() {
           <Image width={30} alt="" height={30} src="/assets/icons/pocket.svg" />
           <div>Pocket Casts</div>
         </div>
+        <div className="listen-on__cards__card"
+         onClick={() => {
+          window.open("https://audiomack.com/insidethehivepod", "_blank", "noopener,noreferrer");
+        }}
+        >
+          <Image width={30} alt="" height={30} src="/assets/icons/audiomack.svg" />
+          <div>audiomack</div>
+        </div>
         {/* <div className="listen-on__cards__card">
           <Image width={30} alt="" height={30} src="/assets/icons/castBox.png" />
           <div>Cast Box</div>

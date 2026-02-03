@@ -16,7 +16,7 @@ const SkeletonLoader = () => {
                 <div className="skeleton-title"></div>
                 <div className="skeleton-episode"></div>
             </div>
-            
+
             <style jsx>{`
                 .latest-episode__card__skeleton {
                     display: flex;
@@ -109,10 +109,10 @@ const SkeletonLoader = () => {
     );
 };
 
-export default function LatestEpisode({ 
-  clientId,
-  clientSecret,
-  showId
+export default function LatestEpisode({
+    clientId,
+    clientSecret,
+    showId
 }) {
     const containerRef = useRef(null);
     const decorativeIconsRef = useRef([]);
@@ -121,7 +121,7 @@ export default function LatestEpisode({
     const subtitleRef = useRef(null);
     const iconsRef = useRef(null);
     const cardRef = useRef(null);
-    
+
     // Spotify API state
     const [latestEpisode, setLatestEpisode] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -162,29 +162,29 @@ export default function LatestEpisode({
     // Fetch latest episode when token is available
     useEffect(() => {
         if (!token) return;
-        
+
         fetchLatestEpisode();
     }, [token, showId]);
 
     const fetchLatestEpisode = async () => {
         try {
             setLoading(true);
-            
+
             const response = await fetch(
-                `https://api.spotify.com/v1/shows/${showId}/episodes?limit=1&offset=0`, 
+                `https://api.spotify.com/v1/shows/${showId}/episodes?limit=1&offset=0`,
                 {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
                 }
             );
-            
+
             if (!response.ok) {
                 throw new Error('Failed to fetch latest episode');
             }
-            
+
             const data = await response.json();
-            
+
             if (data.items && data.items.length > 0) {
                 setLatestEpisode(data.items[0]);
             }
@@ -199,20 +199,20 @@ export default function LatestEpisode({
     // Helper function to get episode info
     const getEpisodeInfo = (episode) => {
         if (!episode) return 'S1 . E1';
-        
+
         const seasonMatch = episode.name.match(/S(\d+)/i) || episode.description.match(/Season (\d+)/i);
         const episodeMatch = episode.name.match(/E(\d+)/i) || episode.description.match(/Episode (\d+)/i);
-        
+
         const season = seasonMatch ? seasonMatch[1] : '1';
         const episodeNum = episodeMatch ? episodeMatch[1] : '1';
-        
+
         return `S${season} . E${episodeNum}`;
     };
 
     // Helper function to get podcast title
     const getPodcastTitle = (episodeName) => {
         if (!episodeName) return 'Latest Episode';
-        
+
         const words = episodeName.split(' ');
         return words.length > 6 ? words.slice(0, 6).join(' ') + '...' : episodeName;
     };
@@ -248,7 +248,7 @@ export default function LatestEpisode({
         // Animate decorative icons with stagger
         // Check if it's mobile device
         const isMobile = window.innerWidth <= 768;
-        
+
         tl.to(decorativeIcons, {
             opacity: isMobile ? 0.4 : 1, // 0.4 on mobile, 1 on desktop
             scale: 1,
@@ -419,31 +419,45 @@ export default function LatestEpisode({
                 <Image width={20} height={20} alt="" src="/assets/icons/dot.svg" />
                 <div>Innovation</div>
             </div>
-            
+
             <div className="latest-episode__title" ref={titleRef}>
                 Inside<span>The Hive</span>
             </div>
-            
+
             <div className="latest-episode__subtitle" ref={subtitleRef}>
                 Available on all streaming platforms. Listen and subscribe!
             </div>
 
             <div className="latest-episode__icons" ref={iconsRef}>
                 <Image width={40} height={40} alt="" src="/assets/icons/youtube.svg"
-                 onClick={() => {
-                    window.open("https://youtube.com/@insidedhive?si=kxGC7cIvatUz3-ES", "_blank", "noopener,noreferrer");
-                  }}
+                    onClick={() => {
+                        window.open("https://youtube.com/@insidedhive?si=kxGC7cIvatUz3-ES", "_blank", "noopener,noreferrer");
+                    }}
                 />
                 <Image width={40} height={40} alt="" src="/assets/icons/spotify.svg"
-                onClick={() => {
-                    window.open("https://open.spotify.com/show/0wOOX8mdQUoRP1adnxV9VD?si=69aa0fcb14ce4e88", "_blank", "noopener,noreferrer");
-                  }}
+                    onClick={() => {
+                        window.open("https://open.spotify.com/show/0wOOX8mdQUoRP1adnxV9VD?si=69aa0fcb14ce4e88", "_blank", "noopener,noreferrer");
+                    }}
                 />
-                <Image width={35} height={38} alt="" src="/assets/icons/castBox.png" />
-                <Image width={45} height={25} alt="" src="/assets/icons/soundclouds.png" />
-                <Image width={40} height={40} alt="" src="/assets/icons/applePodcast.svg" />
+                <Image width={35} height={38} alt="" src="/assets/icons/castBox.png"
+
+                    onClick={() => {
+                        window.open("https://pocketcasts.com/podcasts/bc0339f0-b5c7-0139-f5f7-0acc26574db2", "_blank", "noopener,noreferrer");
+                    }}
+                />
+                {/* <Image width={45} height={25} alt="" src="/assets/icons/soundclouds.png" /> */}
+                <Image width={40} height={40} alt="" src="/assets/icons/applePodcast.svg"
+                    onClick={() => {
+                        window.open("https://podcasts.apple.com/ng/podcast/inside-the-hive-with-feezy/id1573472099", "_blank", "noopener,noreferrer");
+                    }}
+                />
+                <Image width={40} height={40} alt="" src="/assets/icons/audiomack.svg"
+                    onClick={() => {
+                        window.open("https://audiomack.com/insidethehivepod", "_blank", "noopener,noreferrer");
+                    }}
+                />
             </div>
-            
+
             <div className="latest-episode__card" ref={cardRef}>
                 {loading ? (
                     <SkeletonLoader />
@@ -454,19 +468,19 @@ export default function LatestEpisode({
                 ) : latestEpisode ? (
                     <>
                         <div className="latest-episode__card__image"
-                             onClick={() => {
-                                 window.open(latestEpisode?.uri, "_blank", "noopener,noreferrer");
-                             }}
-                             style={{ cursor: 'pointer' }}>
-                            <Image 
-                                width={1400} 
-                                height={400} 
-                                src={latestEpisode.images?.[0]?.url || '/assets/podcast-placeholder.jpg'} 
+                            onClick={() => {
+                                window.open(latestEpisode?.uri, "_blank", "noopener,noreferrer");
+                            }}
+                            style={{ cursor: 'pointer' }}>
+                            <Image
+                                width={1400}
+                                height={400}
+                                src={latestEpisode.images?.[0]?.url || '/assets/podcast-placeholder.jpg'}
                                 alt={latestEpisode.name}
                                 style={{ objectFit: 'cover' }}
                             />
                         </div>
-                        
+
                         <div className="latest-episode__card__group">
                             <div>{getPodcastTitle(latestEpisode.name)}</div>
                             <div>{getEpisodeInfo(latestEpisode)}</div>
@@ -477,7 +491,7 @@ export default function LatestEpisode({
                         <div className="latest-episode__card__image">
                             <Image width={1400} height={400} src="https://i.scdn.co/image/ab6765630000ba8a27354e81d74b3dba7b846e03" alt="" />
                         </div>
-                        
+
                         <div className="latest-episode__card__group">
                             <div>Podcast title</div>
                             <div>S1 . E3</div>

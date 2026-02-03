@@ -48,6 +48,7 @@ export default function Footer() {
           <a href="/enter-the-hive">Enter the Hive</a>
           <a href="/become-a-citizen">Become a Citizen</a>
           <a href="/about-us">About Us</a>
+          <a href="/the-team">The Team</a>
           <a href="/causes">Causes</a>
           <a href="/merch">Merch</a>
           <a href="/jobs">Jobs</a>

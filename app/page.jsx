@@ -13,7 +13,6 @@ import PopularEpisodes from "./components/popularEpisodes";
 import SpotifyPodcast from "./components/spotify";
 import SpotifyComponent from "./components/spotifyComponent";
 import Testimonials from "./components/testimonials";
-import TheTeam from "./components/theTeam";
 import WorkTogether from "./components/workTogether";
 
 
@@ -21,7 +20,7 @@ export async function generateMetadata() {
   return {
     title: "Home",
     description:
-      "A weekly podcast journey presenting innovative, motivating tales with creates, startups and individuals inform listener about blockchain technology and the Web3 space.",
+      "The first Web3 media hub sharing stories + education on Web3 & Gaming. Trusted by builders, founders, and ecosystems shaping African Web3 ecosystem.",
   };
 }
 
@@ -62,7 +61,6 @@ export default function Home() {
       clientSecret={"90750daa64184a31bf03e6ac2426b3bd"}
       showId={"0wOOX8mdQUoRP1adnxV9VD"}
     /> */}
-    <TheTeam />
     {/* <NewEpisodeBanner /> */}
     
   <AllEpisodes
