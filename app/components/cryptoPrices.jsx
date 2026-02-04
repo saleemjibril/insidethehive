@@ -3,7 +3,9 @@ import { useState, useEffect } from 'react';
 import { getCryptoPrices } from '../apis';
 
 const CryptoPriceTicker = ({ 
-  symbols = ['bitcoin', 'ethereum', 'binancecoin', 'avalanche-2', 'solana', 'sui', 'polkadot', 'the-open-network', 'chainlink', 'tether', 'usd-coin', 'dogecoin'],
+  symbols = ['bitcoin', 'ethereum', 'binancecoin', 
+    // 'avalanche-2',
+    'solana', 'sui', 'polkadot', 'the-open-network', 'chainlink', 'tether', 'usd-coin', 'dogecoin'],
   updateInterval = 60000, // 1 minute
   animationSpeed = 50 // seconds for full scroll
 }) => {
@@ -51,7 +53,7 @@ const CryptoPriceTicker = ({
       'bitcoin': 'Bitcoin',
       'ethereum': 'Ethereum',
       'binancecoin': 'BNB',
-      'avalanche-2': 'Avalanche',
+      // 'avalanche-2': 'Avalanche',
       'solana': 'Solana',
       'sui': 'Sui',
       'polkadot': 'Polkadot',
@@ -70,7 +72,7 @@ const CryptoPriceTicker = ({
       'bitcoin': 'BTC',
       'ethereum': 'ETH',
       'binancecoin': 'BNB',
-      'avalanche-2': 'AVAX',
+      // 'avalanche-2': 'AVAX',
       'solana': 'SOL',
       'sui': 'SUI',
       'polkadot': 'DOT',
@@ -147,7 +149,7 @@ const CryptoPriceTicker = ({
           
           .crypto-ticker__scroll {
             display: flex;
-            animation: scroll ${animationSpeed}s linear infinite;
+            animation: scroll 50s linear infinite;
             gap: 40px;
             align-items: center;
           }
@@ -343,11 +345,9 @@ const CryptoPriceTicker = ({
         
         .crypto-ticker__scroll {
           display: flex;
-          animation: scroll ${animationSpeed}s linear infinite;
+          animation: scroll 50s linear infinite;
           gap: 50px;
           align-items: center;
-          will-change: transform;
-          flex-shrink: 0;
         }
         
         .crypto-ticker__item {
@@ -360,8 +360,7 @@ const CryptoPriceTicker = ({
           border-radius: 8px;
           border: 1px solid rgba(255, 215, 0, 0.2);
           white-space: nowrap;
-          transition: background 0.3s ease, border-color 0.3s ease;
-          flex-shrink: 0;
+          transition: all 0.3s ease;
         }
         
         .crypto-ticker__item:hover {

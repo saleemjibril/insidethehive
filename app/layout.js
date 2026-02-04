@@ -5,6 +5,7 @@ import Header from "./components/header";
 import ReduxProvider from "./store/ReduxProvider";
 import CryptoPriceTicker from "./components/cryptoPrices";
 import { Toast } from './toast';
+import ScrollToTop from "./components/scrollToTop";
 
 const silkFlower = localFont({
   src: "../public/assets/SilkFlower.woff2",
@@ -53,6 +54,7 @@ export default function RootLayout({ children }) {
 
         <Header />
         <Toast />
+        <ScrollToTop />
 
         <ReduxProvider>{children}</ReduxProvider>
       </body>
