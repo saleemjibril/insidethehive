@@ -346,6 +346,8 @@ const CryptoPriceTicker = ({
           animation: scroll ${animationSpeed}s linear infinite;
           gap: 50px;
           align-items: center;
+          will-change: transform;
+          flex-shrink: 0;
         }
         
         .crypto-ticker__item {
@@ -358,7 +360,8 @@ const CryptoPriceTicker = ({
           border-radius: 8px;
           border: 1px solid rgba(255, 215, 0, 0.2);
           white-space: nowrap;
-          transition: all 0.3s ease;
+          transition: background 0.3s ease, border-color 0.3s ease;
+          flex-shrink: 0;
         }
         
         .crypto-ticker__item:hover {
