@@ -1,5 +1,6 @@
 "use client"
 import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 
 export default function Categories() {
     const [visibleCards, setVisibleCards] = useState(new Set());
@@ -41,6 +42,16 @@ export default function Categories() {
             id: 'nft',
             image: '/assets/nft.jpg',
             letters: ['N', 'F', 'T', 's'],
+            colors: {
+                title: '#fff',
+                button: '#fff',
+                brand: '#fff'
+            }
+        },
+        {
+            id: 'creator-and-socialfi',
+            image: '/assets/nft.jpg',
+            letters: ['Creator', 'and', 'Socialfi'],
             colors: {
                 title: '#fff',
                 button: '#fff',
@@ -99,14 +110,16 @@ export default function Categories() {
                     </div>
 
                     <div className="categories__card__button-group">
-                        <button
-                            style={{
-                                borderColor: category.colors.button,
-                                color: category.colors.button
-                            }}
-                        >
-                            view episodes
-                        </button>
+                        <Link href={`/categories/${category.id}`}>
+                            <button
+                                style={{
+                                    borderColor: category.colors.button,
+                                    color: category.colors.button
+                                }}
+                            >
+                                view episodes
+                            </button>
+                        </Link>
                         <div 
                             className="brand-text"
                             style={{ color: category.colors.brand }}

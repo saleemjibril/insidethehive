@@ -1,7 +1,7 @@
 // components/SpotifyPodcast.jsx
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from "next/image";
 
 // Skeleton Loader Component
@@ -203,6 +203,79 @@ export default function AllEpisodes({
 
   // Dynamic tags extracted from actual episode content
   const [availableTags, setAvailableTags] = useState([]);
+
+  // Spotify IFrame API refs for playback synchronization
+  const spotifyApiRef = useRef(null);
+  const controllersRef = useRef(new Map());
+  const currentlyPlayingRef = useRef(null);
+  const [apiReady, setApiReady] = useState(false);
+
+  // Load the Spotify IFrame API
+  useEffect(() => {
+    const existingScript = document.querySelector('script[src="https://open.spotify.com/embed/iframe-api/v1"]');
+    if (existingScript) return;
+
+    const script = document.createElement('script');
+    script.src = 'https://open.spotify.com/embed/iframe-api/v1';
+    script.async = true;
+    document.body.appendChild(script);
+
+    window.onSpotifyIframeApiReady = (IFrameAPI) => {
+      spotifyApiRef.current = IFrameAPI;
+      setApiReady(true);
+    };
+
+    return () => {
+      controllersRef.current.forEach(ctrl => ctrl.destroy());
+      controllersRef.current.clear();
+    };
+  }, []);
+
+  // Create Spotify embed controllers for visible episodes.
+  // When one episode starts playing, the previously playing episode is paused.
+  useEffect(() => {
+    if (!spotifyApiRef.current) return;
+
+    const api = spotifyApiRef.current;
+    const { episodes: currentEpisodes } = getPaginatedEpisodes();
+    const currentIds = new Set(currentEpisodes.map(ep => ep.id));
+
+    // Destroy controllers for episodes no longer on the page
+    controllersRef.current.forEach((ctrl, id) => {
+      if (!currentIds.has(id)) {
+        ctrl.destroy();
+        controllersRef.current.delete(id);
+      }
+    });
+
+    // Create controllers for newly visible episodes
+    currentEpisodes.forEach(episode => {
+      if (controllersRef.current.has(episode.id)) return;
+
+      const container = document.getElementById(`spotify-embed-${episode.id}`);
+      if (!container || container.children.length > 0) return;
+
+      api.createController(container, {
+        uri: `spotify:episode:${episode.id}`,
+        height: 152,
+        width: '100%',
+      }, (controller) => {
+        controllersRef.current.set(episode.id, controller);
+
+        controller.addListener('playback_update', (e) => {
+          if (!e.data.isPaused) {
+            if (currentlyPlayingRef.current && currentlyPlayingRef.current !== episode.id) {
+              const prevCtrl = controllersRef.current.get(currentlyPlayingRef.current);
+              if (prevCtrl) prevCtrl.togglePlay();
+            }
+            currentlyPlayingRef.current = episode.id;
+          } else if (currentlyPlayingRef.current === episode.id) {
+            currentlyPlayingRef.current = null;
+          }
+        });
+      });
+    });
+  }, [apiReady, allEpisodes, keyword, selectedTag, sortOrder, currentPage, itemsPerPage]);
 
   // Get Spotify Access Token
   useEffect(() => {
@@ -612,19 +685,11 @@ export default function AllEpisodes({
                   </div>
 
                   <div className="episodes__cards__card__inner__preview">
-                    {/* Spotify Embed */}
-                    <div style={{ width: '100%' }}>
-                      <iframe 
-                        src={`https://open.spotify.com/embed/episode/${episode.id}?utm_source=generator&theme=0`}
-                        width="100%" 
-                        height="152" 
-                        frameBorder="0" 
-                        allowFullScreen="" 
-                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                        loading="lazy"
-                        style={{ borderRadius: '12px' }}
-                      ></iframe>
-                    </div>
+                    {/* Spotify Embed — IFrame API populates this container */}
+                    <div
+                      id={`spotify-embed-${episode.id}`}
+                      style={{ width: '100%', minHeight: '152px', borderRadius: '12px' }}
+                    />
 
                     <div className="episodes__cards__card__inner__preview__group">
                       <div>{new Date(episode.release_date).toLocaleDateString()}</div>

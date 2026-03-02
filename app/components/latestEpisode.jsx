@@ -186,6 +186,8 @@ export default function LatestEpisode({
             const data = await response.json();
 
             if (data.items && data.items.length > 0) {
+                console.log("latestEpisode", data.items[0]);
+                
                 setLatestEpisode(data.items[0]);
             }
         } catch (err) {
@@ -483,7 +485,7 @@ export default function LatestEpisode({
 
                         <div className="latest-episode__card__group">
                             <div>{getPodcastTitle(latestEpisode.name)}</div>
-                            <div>{getEpisodeInfo(latestEpisode)}</div>
+                            {/* <div>{getEpisodeInfo(latestEpisode)}</div> */}
                         </div>
                     </>
                 ) : (

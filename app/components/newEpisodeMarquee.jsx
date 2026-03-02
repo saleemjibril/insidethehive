@@ -5,7 +5,7 @@ export default function NewEpisodeMarquee() {
     const generateItems = (count = 20) => {
         return Array.from({ length: count }, (_, i) => (
             <div key={i} className="marquee-item">
-                New Episode every Friday 🐝
+                Africa’s #1 Web3 Podcast 🐝
             </div>
         ));
     };

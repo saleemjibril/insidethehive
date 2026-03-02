@@ -46,7 +46,7 @@ export default function Footer() {
 <div className="footer__inner__group__links">
                     {/* <div href="#" className="footer__inner__group__links__title">Bankless</div> */}
           <a href="/enter-the-hive">Enter the Hive</a>
-          <a href="/become-a-citizen">Become a Citizen</a>
+          <a href="/become-a-bee">Become a Bee</a>
           <a href="/about-us">About Us</a>
           <a href="/the-team">The Team</a>
           <a href="/causes">Causes</a>

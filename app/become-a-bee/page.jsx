@@ -17,7 +17,7 @@ export default function BecomeACitizen() {
             <Image className="become-a-citizen__hero__image" src="/assets/Become a Citizen.png" width={500} height={500} alt="Become a Citizen - Community engagement background" />
           <div className="become-a-citizen__hero__inner">
             <h1 className="become-a-citizen__hero__inner__title">
-              Become a <span>Citizen</span>
+              Become a <span>Bee</span>
             </h1>
             <p className="become-a-citizen__hero__inner__subtitle">
               Being part of the Hive means stepping into a space where curiosity
@@ -28,6 +28,9 @@ export default function BecomeACitizen() {
               sessions, and the chance to grow alongside others who share the
               same passion and drive.
             </p>
+            <br />
+                      <a href="https://linktr.ee/Insidethehivepod" target="__blank" className="become-a-citizen__hero__inner__button">Join us</a>
+
           </div>
         </div>
       </div>

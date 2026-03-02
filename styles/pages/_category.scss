@@ -1,0 +1,57 @@
+.category-page {
+    &__header {
+        width: 100%;
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6));
+        padding: 80px 20px;
+        margin-bottom: 60px;
+        
+        &__content {
+            width: 100%;
+            max-width: 1192px;
+            margin: 0 auto;
+        }
+        
+        &__title {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-family: var(--font-durkwide);
+            color: $secondary-color;
+            
+            @media (max-width: 768px) {
+                font-size: 36px;
+            }
+        }
+        
+        &__description {
+            font-size: 18px;
+            color: #ccc;
+            max-width: 600px;
+            line-height: 1.6;
+            
+            @media (max-width: 768px) {
+                font-size: 14px;
+            }
+        }
+    }
+    
+    &__episodes {
+        width: 100%;
+        max-width: 1192px;
+        margin: 0 auto;
+        padding: 0 20px;
+        
+        // Hide title group, search, and filters in category page
+        .episodes__title-group {
+            display: none;
+        }
+        
+        .episodes__search {
+            display: none;
+        }
+        
+        .episodes__filters {
+            display: none;
+        }
+    }
+}

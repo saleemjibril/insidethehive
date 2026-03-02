@@ -55,6 +55,22 @@
         color: #000;
         margin-bottom: 1rem;
       }
+
+      &__button {
+  border: none;
+  background: none;
+  padding: 12px 26px;
+  border-radius: 24px;
+  font-size: 12px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+    background: #fbbf24 !important;
+  color: #000 !important;
+  font-weight: 700;
+}
+
+
     }
   }
 }
