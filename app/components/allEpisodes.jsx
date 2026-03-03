@@ -335,7 +335,9 @@ export default function AllEpisodes({
         }
         
         const data = await response.json();
-        allEpisodesData = [...allEpisodesData, ...data.items];
+        // Filter out null/undefined episodes (Spotify API can return null for restricted content)
+        const validItems = (data.items || []).filter(ep => ep != null);
+        allEpisodesData = [...allEpisodesData, ...validItems];
         
         hasMore = data.next !== null;
         offset += 50;
@@ -361,7 +363,7 @@ export default function AllEpisodes({
 
   // Filter and sort episodes
   const getFilteredAndSortedEpisodes = () => {
-    let filtered = [...allEpisodes];
+    let filtered = allEpisodes.filter(ep => ep != null);
     
     // Filter by keyword
     if (keyword.trim()) {

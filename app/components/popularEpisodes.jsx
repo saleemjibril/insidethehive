@@ -227,8 +227,11 @@ export default function PopularEpisodes({
       const data = await response.json();
       console.log("found episodes:", data);
       
+      // Filter out null/undefined episodes (Spotify API can return null for restricted content)
+      const validItems = (data.items || []).filter(ep => ep != null);
+      
       // Sort episodes by popularity (using release date as proxy, newest first)
-      const sortedEpisodes = data.items.sort((a, b) => 
+      const sortedEpisodes = validItems.sort((a, b) => 
         new Date(b?.release_date) - new Date(a?.release_date)
       );
       

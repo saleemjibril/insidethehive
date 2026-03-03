@@ -171,7 +171,7 @@ export default function LatestEpisode({
             setLoading(true);
 
             const response = await fetch(
-                `https://api.spotify.com/v1/shows/${showId}/episodes?limit=1&offset=0`,
+                `https://api.spotify.com/v1/shows/${showId}/episodes?limit=10&offset=0`,
                 {
                     headers: {
                         'Authorization': `Bearer ${token}`
@@ -185,10 +185,11 @@ export default function LatestEpisode({
 
             const data = await response.json();
 
-            if (data.items && data.items.length > 0) {
-                console.log("latestEpisode", data.items[0]);
-                
-                setLatestEpisode(data.items[0]);
+            // Filter out null/undefined episodes (Spotify API can return null for restricted content)
+            const firstValid = (data.items || []).find(ep => ep != null);
+            if (firstValid) {
+                console.log("latestEpisode", firstValid);
+                setLatestEpisode(firstValid);
             }
         } catch (err) {
             console.error('Error fetching latest episode:', err);

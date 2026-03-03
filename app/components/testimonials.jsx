@@ -217,7 +217,8 @@ export default function Testimonials({
       const data = await response.json();
       console.log("Fetched episodes for testimonials:", data);
       
-      setEpisodes(data.items);
+      // Filter out null/undefined episodes (Spotify API can return null for restricted content)
+      setEpisodes((data.items || []).filter(ep => ep != null));
     } catch (err) {
       console.error('Error fetching Spotify episodes:', err);
       setError(err.message);

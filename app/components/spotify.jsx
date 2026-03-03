@@ -85,7 +85,9 @@ export default function SpotifyPodcast({
       
       const data = await response.json();
       
-      setEpisodes(data.items);
+      // Filter out null/undefined episodes (Spotify API can return null for restricted content)
+      const validItems = (data.items || []).filter(ep => ep != null);
+      setEpisodes(validItems);
       setTotalEpisodes(data.total);
       setHasMore(data.next !== null);
     } catch (err) {
@@ -98,7 +100,7 @@ export default function SpotifyPodcast({
 
   // Filter episodes based on keyword and selected tag
   const getFilteredAndSortedEpisodes = () => {
-    let filtered = episodes;
+    let filtered = episodes.filter(ep => ep != null);
     
     // Filter by keyword
     if (keyword) {
