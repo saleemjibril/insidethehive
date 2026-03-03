@@ -118,8 +118,8 @@ export default function SpotifyPodcast({
     
     // Sort episodes
     filtered.sort((a, b) => {
-      const dateA = new Date(a.release_date);
-      const dateB = new Date(b.release_date);
+      const dateA = new Date(a?.release_date);
+      const dateB = new Date(b?.release_date);
       return sortOrder === 'desc' ? dateB - dateA : dateA - dateB;
     });
     
@@ -267,8 +267,8 @@ export default function SpotifyPodcast({
                     </div>
 
                     <div className="episodes__cards__card__inner__preview__group">
-                      <div>{new Date(episode.release_date).toLocaleDateString()}</div>
-                      <div>{formatDuration(episode.duration_ms)}</div>
+                      <div>{new Date(episode?.release_date).toLocaleDateString()}</div>
+                      <div>{formatDuration(episode?.duration_ms)}</div>
                     </div>
 
                     {/* Spotify Embed */}

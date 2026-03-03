@@ -229,7 +229,7 @@ export default function PopularEpisodes({
       
       // Sort episodes by popularity (using release date as proxy, newest first)
       const sortedEpisodes = data.items.sort((a, b) => 
-        new Date(b.release_date) - new Date(a.release_date)
+        new Date(b?.release_date) - new Date(a?.release_date)
       );
       
       setEpisodes(sortedEpisodes);
