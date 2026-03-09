@@ -6,6 +6,7 @@ import ReduxProvider from "./store/ReduxProvider";
 import CryptoPriceTicker from "./components/cryptoPrices";
 import { Toast } from './toast';
 import ScrollToTop from "./components/scrollToTop";
+import { Analytics } from "@vercel/analytics/next"
 
 const silkFlower = localFont({
   src: "../public/assets/SilkFlower.woff2",
@@ -57,6 +58,7 @@ export default function RootLayout({ children }) {
         <ScrollToTop />
 
         <ReduxProvider>{children}</ReduxProvider>
+      <Analytics />
       </body>
     </html>
   );
