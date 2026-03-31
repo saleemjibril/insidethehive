@@ -1,11 +1,23 @@
 import Image from "next/image";
 import Footer from "../components/footer";
+import { socialMetadata } from "../../lib/socialMetadata";
 
 export async function generateMetadata() {
+  const title = "Become a Bee";
+  const description =
+    "Being part of the Hive means stepping into a space where curiosity is celebrated and opportunities are shared.";
+  const images = [
+    {
+      url: "/assets/Become a Citizen.png",
+      width: 500,
+      height: 500,
+      alt: title,
+    },
+  ];
   return {
-    title: "Become a Citizen",
-    description:
-      "Being part of the Hive means stepping into a space where curiosity is celebrated and opportunities are shared.",
+    title,
+    description,
+    ...socialMetadata("/become-a-bee", { title, description, images }),
   };
 }
 

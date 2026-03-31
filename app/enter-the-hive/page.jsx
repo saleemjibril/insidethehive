@@ -1,11 +1,23 @@
 import Image from "next/image";
 import Footer from "../components/footer";
+import { socialMetadata } from "../../lib/socialMetadata";
 
 export async function generateMetadata() {
+  const title = "Enter the Hive";
+  const description =
+    "Inside the Hive is a Web3 podcast and media brand building a strong community of Web3 and gaming enthusiasts across Africa, yet its reach goes far beyond one continent.";
+  const images = [
+    {
+      url: "/assets/enter_the_hive.jpeg",
+      width: 500,
+      height: 500,
+      alt: title,
+    },
+  ];
   return {
-    title: "Enter the Hive",
-    description:
-      "Inside the Hive is a Web3 podcast and media brand building a strong community of Web3 and gaming enthusiasts across Africa, yet its reach goes far beyond one continent.",
+    title,
+    description,
+    ...socialMetadata("/enter-the-hive", { title, description, images }),
   };
 }
 

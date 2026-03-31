@@ -1,11 +1,23 @@
 import Image from "next/image";
 import Footer from "../components/footer";
+import { socialMetadata } from "../../lib/socialMetadata";
 
 export async function generateMetadata() {
+  const title = "Causes";
+  const description =
+    "Inside the Hive is built on inclusion and impact. We support education, gaming culture, and financial empowerment by amplifying voices and stories that deserve to be heard.";
+  const images = [
+    {
+      url: "/assets/About Us.png",
+      width: 500,
+      height: 500,
+      alt: title,
+    },
+  ];
   return {
-    title: "Causes",
-    description:
-      "Inside the Hive is built on inclusion and impact. We support education, gaming culture, and financial empowerment by amplifying voices and stories that deserve to be heard.",
+    title,
+    description,
+    ...socialMetadata("/causes", { title, description, images }),
   };
 }
 

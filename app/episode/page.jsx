@@ -1,5 +1,25 @@
 import Image from "next/image";
 import SpotifyComponent from "../components/spotifyComponent";
+import { socialMetadata } from "../../lib/socialMetadata";
+
+export async function generateMetadata() {
+  const title = "Episode";
+  const description =
+    "Listen to Inside The Hive on your favorite platform—Web3, gaming, and stories from the ecosystem.";
+  const images = [
+    {
+      url: "/assets/podcast1.jpg",
+      width: 800,
+      height: 1000,
+      alt: "Inside The Hive episode",
+    },
+  ];
+  return {
+    title,
+    description,
+    ...socialMetadata("/episode", { title, description, images }),
+  };
+}
 
 export default function Episode() {
   return (

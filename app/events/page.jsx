@@ -1,11 +1,15 @@
 import Footer from "../components/footer";
 import EventsPreview from "../components/eventsPreview";
+import { socialMetadata } from "../../lib/socialMetadata";
 
 export async function generateMetadata() {
+  const title = "Events";
+  const description =
+    "Photo galleries from Inside The Hive events—Technova, Redotspay, and more.";
   return {
-    title: "Events",
-    description:
-      "Photo galleries from Inside The Hive events—Technova, Redotspay, and more.",
+    title,
+    description,
+    ...socialMetadata("/events", { title, description }),
   };
 }
 

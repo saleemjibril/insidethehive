@@ -1,45 +1,13 @@
-'use client';
+"use client";
 
-import { useParams } from 'next/navigation';
-import AllEpisodes from '../../components/allEpisodes';
-
-const categoryInfo = {
-  'blockchain': {
-    title: 'Blockchain Episodes',
-    description: 'Explore episodes about blockchain technology',
-    image: '/assets/blockchain1.jpg',
-    keywords: ['blockchain']
-  },
-  'crypto': {
-    title: 'Crypto Payments',
-    description: 'Episodes about cryptocurrency and digital payments',
-    image: '/assets/cryptopayment4.jpg',
-    keywords: ['crypto', 'payments']
-  },
-  'web3': {
-    title: 'Web3 & Gaming',
-    description: 'Discover the intersection of Web3 and gaming',
-    image: '/assets/web3gaming.jpg',
-    keywords: ['web3', 'gaming']
-  },
-  'nft': {
-    title: 'NFTs',
-    description: 'Learn about non-fungible tokens and digital collectibles',
-    image: '/assets/nft.jpg',
-    keywords: ['nft']
-  },
-  'creator-and-socialfi': {
-    title: 'Creator & SocialFi',
-    description: 'Episodes about creators and social finance',
-    image: '/assets/nft.jpg',
-    keywords: ['creator', 'socialfi']
-  }
-};
+import { useParams } from "next/navigation";
+import AllEpisodes from "../../components/allEpisodes";
+import { getCategoryRoute } from "../../../lib/categoryRoutes";
 
 export default function CategoryPage() {
   const params = useParams();
   const categoryId = params.categoryId;
-  const category = categoryInfo[categoryId] || { title: 'Category', description: '' };
+  const category = getCategoryRoute(categoryId);
 
   return (
     <div className="category-page">

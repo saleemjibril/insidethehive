@@ -16,13 +16,16 @@ import SpotifyComponent from "./components/spotifyComponent";
 import Testimonials from "./components/testimonials";
 import WorkTogether from "./components/workTogether";
 import TwitterTweetsPreview from "./components/twitterTweetsPreview";
-
+import { socialMetadata } from "../lib/socialMetadata";
 
 export async function generateMetadata() {
+  const title = "Home";
+  const description =
+    "The first Web3 media hub sharing stories + education on Web3 & Gaming. Trusted by builders, founders, and ecosystems shaping African Web3 ecosystem.";
   return {
-    title: "Home",
-    description:
-      "The first Web3 media hub sharing stories + education on Web3 & Gaming. Trusted by builders, founders, and ecosystems shaping African Web3 ecosystem.",
+    title,
+    description,
+    ...socialMetadata("/", { title, description }),
   };
 }
 

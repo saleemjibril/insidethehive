@@ -1,12 +1,23 @@
-
 import Image from "next/image";
 import Footer from "../components/footer";
+import { socialMetadata } from "../../lib/socialMetadata";
 
 export async function generateMetadata() {
+  const title = "About Us";
+  const description =
+    "We are storytellers, gamers, and creators with a mission to inspire Web3 adoption in Africa and beyond.";
+  const images = [
+    {
+      url: "/assets/About Us.png",
+      width: 500,
+      height: 500,
+      alt: title,
+    },
+  ];
   return {
-    title: "About Us",
-    description:
-      "We are storytellers, gamers, and creators with a mission to inspire Web3 adoption in Africa and beyond.",
+    title,
+    description,
+    ...socialMetadata("/about-us", { title, description, images }),
   };
 }
 

@@ -1,12 +1,23 @@
-
 import Image from "next/image";
 import Footer from "../components/footer";
+import { socialMetadata } from "../../lib/socialMetadata";
 
 export async function generateMetadata() {
+  const title = "Advertise With Us";
+  const description =
+    "We provide brands, builders, and projects with a trusted platform to connect with an audience that is curious, informed, and ready to engage with Web3.";
+  const images = [
+    {
+      url: "/assets/About Us.png",
+      width: 500,
+      height: 500,
+      alt: title,
+    },
+  ];
   return {
-    title: "Advertise With Us",
-    description:
-      "We provide brands, builders, and projects with a trusted platform to connect with an audience that is curious, informed, and ready to engage with Web3.",
+    title,
+    description,
+    ...socialMetadata("/advertise-with-us", { title, description, images }),
   };
 }
 

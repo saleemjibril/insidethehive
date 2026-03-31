@@ -47,27 +47,52 @@ const geist = Geist({
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL || "https://www.insidethehive.com";
 
+const siteName =
+  process.env.NEXT_PUBLIC_SITE_NAME || "Inside The Hive";
+
+const defaultDescription =
+  process.env.NEXT_PUBLIC_SITE_DESCRIPTION ||
+  "The first Web3 media hub sharing stories + education on Web3 & Gaming. Trusted by builders, founders, and ecosystems shaping African Web3 ecosystem.";
+
 /** Default share image: set NEXT_PUBLIC_OG_IMAGE_URL or add /public/og.png (1200×630). */
 const defaultOgImage =
   process.env.NEXT_PUBLIC_OG_IMAGE_URL || "/og.png";
 
+/** X/Twitter @handle for twitter:site (no @ in env is OK). */
+const twitterSite =
+  process.env.NEXT_PUBLIC_TWITTER_SITE || "@insidedhive";
+
+const base = new URL(siteUrl);
+
 export const metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: base,
+  title: {
+    default: siteName,
+    template: `%s | ${siteName}`,
+  },
+  description: defaultDescription,
+  applicationName: siteName,
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Inside The Hive",
+    url: "/",
+    siteName,
+    title: siteName,
+    description: defaultDescription,
     images: [
       {
         url: defaultOgImage,
         width: 1200,
         height: 630,
-        alt: "Inside The Hive",
+        alt: siteName,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
+    site: twitterSite.startsWith("@") ? twitterSite : `@${twitterSite}`,
+    title: siteName,
+    description: defaultDescription,
     images: [defaultOgImage],
   },
 };

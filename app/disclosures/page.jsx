@@ -1,12 +1,23 @@
-
 import Image from "next/image";
 import Footer from "../components/footer";
+import { socialMetadata } from "../../lib/socialMetadata";
 
 export async function generateMetadata() {
+  const title = "Disclosures";
+  const description =
+    "Trust is the foundation of everything we do. Our commitment is to remain transparent, credible, and community-driven through all of our activities and in every piece of content we share.";
+  const images = [
+    {
+      url: "/assets/About Us.png",
+      width: 500,
+      height: 500,
+      alt: title,
+    },
+  ];
   return {
-    title: "Disclosures",
-    description:
-      "Trust is the foundation of everything we do. Our commitment is to remain transparent, credible, and community-driven through all of our activities and in every piece of content we share.",
+    title,
+    description,
+    ...socialMetadata("/disclosures", { title, description, images }),
   };
 }
 
