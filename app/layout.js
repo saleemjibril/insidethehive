@@ -1,3 +1,4 @@
+import "react-tweet/theme.css";
 import "../styles/index.scss";
 import { Inter, Syne, Geist } from "next/font/google";
 import localFont from "next/font/local";
@@ -43,6 +44,34 @@ const geist = Geist({
   variable: "--font-geist",
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.insidethehive.com";
+
+/** Default share image: set NEXT_PUBLIC_OG_IMAGE_URL or add /public/og.png (1200×630). */
+const defaultOgImage =
+  process.env.NEXT_PUBLIC_OG_IMAGE_URL || "/og.png";
+
+export const metadata = {
+  metadataBase: new URL(siteUrl),
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "Inside The Hive",
+    images: [
+      {
+        url: defaultOgImage,
+        width: 1200,
+        height: 630,
+        alt: "Inside The Hive",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [defaultOgImage],
+  },
+};
+
 export default function RootLayout({ children }) {
   return (
     <html
@@ -53,7 +82,7 @@ export default function RootLayout({ children }) {
       <body>
             <CryptoPriceTicker />
 
-        <Header />
+        {/* <Header /> */}
         <Toast />
         <ScrollToTop />
 

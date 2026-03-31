@@ -36,7 +36,7 @@ export default function Footer() {
                             Inside The Hive
                         </div>
 
-                        <a href="#popular" className="footer__inner__group__button">
+                        <a href="/#popular" className="footer__inner__group__button">
                             Watch more
 
                             <Image src={"/assets/icons/rightArrow.svg"} width={18} height={18} alt="Right Arrow" />
@@ -49,6 +49,7 @@ export default function Footer() {
           <a href="/become-a-bee">Become a Bee</a>
           <a href="/about-us">About Us</a>
           <a href="/the-team">The Team</a>
+          <a href="/events">Events</a>
           <a href="/causes">Causes</a>
           <a href="/merch">Merch</a>
           <a href="/jobs">Jobs</a>
@@ -57,10 +58,10 @@ export default function Footer() {
                     </div>
 
                     <div className="footer__inner__group__links">
-                    <a href="#latest">Latest Episode</a>
-          <a href="#popular">Popular Episodes</a>
-          <a href="#all">All Episodes</a>
-          <a href="#articles">Articles</a>
+                    <a href="/#latest">Latest Episode</a>
+          <a href="/#popular">Popular Episodes</a>
+          <a href="/#all">All Episodes</a>
+          <a href="/#articles">Articles</a>
           <a href="https://drive.google.com/drive/folders/10Fhr7YT0zCkxYTNOEG3ZOcL_9IohWmEN?usp=drive_link" target="_blank" rel="noopener noreferrer">Branding Kit</a>
                     </div>
                    

@@ -1,0 +1,111 @@
+.tweets-preview {
+  width: 100%;
+  // background: #0f1419;
+  color: #000;
+  padding: 72px 20px 80px;
+  margin: 0 auto;
+
+  &__inner {
+    width: 100%;
+    max-width: 1192px;
+    margin: 0 auto;
+  }
+
+  &__header {
+    margin-bottom: 40px;
+    text-align: center;
+
+    @media (max-width: $tablet) {
+      text-align: left;
+    }
+  }
+
+  &__title {
+    font-size: 60px;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-family: var(--font-durkwide);
+    line-height: 1.15;
+    margin-bottom: 16px;
+    color: #000;
+
+    & > span {
+      color: $secondary-color;
+    }
+
+    @media (max-width: $tablet) {
+      font-size: 36px;
+    }
+  }
+
+  &__intro {
+    max-width: 52ch;
+    margin: 0 auto;
+    line-height: 160%;
+    font-weight: 300;
+    color: #000;
+
+    @media (max-width: $tablet) {
+      margin: 0;
+    }
+  }
+
+  &__theme-wrap {
+    width: 100%;
+  }
+
+  /* Black tweet surfaces (react-tweet dark theme defaults to blue-gray #15202b) */
+  .tweets-preview__theme-wrap[data-theme="dark"] .react-tweet-theme {
+    --tweet-bg-color: #000000;
+    --tweet-bg-color-hover: #0a0a0a;
+    --tweet-border: 1px solid #2f3336;
+    --tweet-skeleton-gradient: linear-gradient(
+      270deg,
+      #080808,
+      #121212,
+      #121212,
+      #080808
+    );
+    --tweet-quoted-bg-color-hover: rgba(255, 255, 255, 0.05);
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    align-items: start;
+
+    @media (max-width: $tablet) {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+
+  &__cell {
+    width: 100%;
+    min-width: 0;
+
+    :where(.react-tweet-theme) {
+      --tweet-container-margin: 0;
+    }
+  }
+
+  &__skeleton {
+    width: 100%;
+    min-height: 280px;
+    border-radius: 16px;
+    border: 1px solid #2f3336;
+    background: linear-gradient(270deg, #080808, #121212, #121212, #080808);
+    background-size: 400% 100%;
+    animation: tweets-preview-shimmer 1.2s ease-in-out infinite;
+  }
+}
+
+@keyframes tweets-preview-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}

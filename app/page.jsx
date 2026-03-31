@@ -2,6 +2,7 @@ import AllEpisodes from "./components/allEpisodes";
 import Categories from "./components/catgories";
 import CryptoPriceTicker from "./components/cryptoPrices";
 import Engage from "./components/engage";
+import EventsPreview from "./components/eventsPreview";
 import Footer from "./components/footer";
 import LatestEpisode from "./components/latestEpisode";
 import ListenOn from "./components/listenOn";
@@ -14,6 +15,7 @@ import SpotifyPodcast from "./components/spotify";
 import SpotifyComponent from "./components/spotifyComponent";
 import Testimonials from "./components/testimonials";
 import WorkTogether from "./components/workTogether";
+import TwitterTweetsPreview from "./components/twitterTweetsPreview";
 
 
 export async function generateMetadata() {
@@ -46,7 +48,9 @@ export default function Home() {
     clientSecret={"90750daa64184a31bf03e6ac2426b3bd"}
     showId={"0wOOX8mdQUoRP1adnxV9VD"}
     />
+    <EventsPreview showViewAll viewAllHref="/events" heading="Events"/>
     <WorkTogether />
+    <TwitterTweetsPreview />
     <Categories />
     <Engage />
     <SpotifyComponent /> 
