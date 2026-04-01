@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -199,11 +200,24 @@ export default function TheTeam() {
     <div className="home__design-tools" ref={containerRef}>
       <div className="home__design-tools__inner">
         <div className="home__design-tools__inner__card1" ref={titleRef}>
-          Meet <span>The Hive </span>Team
+         <div> Meet <span>The Hive </span>Team</div>
+
+          <p className="become-a-citizen__hero__inner__subtitle">
+              Want to work with the team?{" "}
+              <br />
+              <Link
+                href="/join-the-hive"
+                className="become-a-citizen__hero__inner__cta"
+              >
+                Apply on Join The Hive
+              </Link>
+              .
+            </p>
         </div>
         <div className="home__design-tools__inner__card2">
           {teamMembers?.map((member) => (
             <div
+              key={member.name}
               className="home__design-tools__inner__card2__card"
               ref={addToRefs}
             >
@@ -223,6 +237,7 @@ export default function TheTeam() {
               </div>
             </div>
           ))}
+          
         </div>
       </div>
     </div>

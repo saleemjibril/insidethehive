@@ -1,0 +1,156 @@
+.join-hive {
+  background: #fff;
+  color: #000;
+  padding: 40px 20px 80px;
+  padding-top: 140px;
+  min-height: 60vh;
+
+  &__inner {
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-size: 48px;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-family: var(--font-durkwide);
+    line-height: 1.15;
+    margin-bottom: 16px;
+    color: #000;
+
+    & > span {
+      color: $secondary-color;
+    }
+
+    @media (max-width: $tablet) {
+      font-size: 32px;
+    }
+  }
+
+  &__intro {
+    line-height: 160%;
+    font-weight: 300;
+    color: #17171c;
+    margin-bottom: 28px;
+    max-width: 52ch;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    &__note {
+      font-size: 15px;
+      margin-bottom: 12px;
+
+      a {
+        color: #000;
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+
+        &:hover {
+          color: #6b5500;
+        }
+      }
+    }
+  }
+
+  &__label {
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 14px;
+    margin-bottom: 4px;
+    color: #000;
+  }
+
+  &__req {
+    color: #c00;
+  }
+
+  &__input {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    min-height: 48px;
+    padding: 10px 12px;
+    font-size: 16px;
+    color: #17171c;
+    background: #fafafa;
+
+    &:focus {
+      outline: 2px solid $secondary-color;
+      outline-offset: 1px;
+      border-color: #999;
+    }
+
+    &::placeholder {
+      color: #888;
+    }
+  }
+
+  &__error {
+    font-size: 13px;
+    color: #b00020;
+    margin-top: 2px;
+  }
+
+  &__fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 8px;
+  }
+
+  &__checkboxes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  &__check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 400;
+    cursor: pointer;
+    line-height: 1.35;
+
+    input {
+      margin-top: 3px;
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      accent-color: #000;
+    }
+  }
+
+  &__submit {
+    margin-top: 24px;
+    align-self: flex-start;
+    min-height: 48px;
+    padding: 0 28px;
+    border: none;
+    border-radius: 8px;
+    background: $secondary-color;
+    color: #000;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: filter 0.2s, transform 0.15s;
+
+    &:hover:not(:disabled) {
+      filter: brightness(0.95);
+    }
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+  }
+}

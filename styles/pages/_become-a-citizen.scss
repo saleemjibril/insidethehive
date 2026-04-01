@@ -57,20 +57,30 @@
       }
 
       &__button {
-  border: none;
-  background: none;
-  padding: 12px 26px;
-  border-radius: 24px;
-  font-size: 12px;
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.3s ease;
-    background: #fbbf24 !important;
-  color: #000 !important;
-  font-weight: 700;
-}
+        border: none;
+        background: none;
+        padding: 12px 26px;
+        border-radius: 24px;
+        font-size: 12px;
+        color: #fff;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: #fbbf24 !important;
+        color: #000 !important;
+        font-weight: 700;
+      }
 
+      &__cta {
+        font-weight: 600;
+        color: #000;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        transition: color 0.2s ease;
 
+        &:hover {
+          color: $secondary-color;
+        }
+      }
     }
   }
 }

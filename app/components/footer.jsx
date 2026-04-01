@@ -58,6 +58,7 @@ export default function Footer() {
                     </div>
 
                     <div className="footer__inner__group__links">
+                    <a href="/join-the-hive">Join The Hive</a>
                     <a href="/#latest">Latest Episode</a>
           <a href="/#popular">Popular Episodes</a>
           <a href="/#all">All Episodes</a>

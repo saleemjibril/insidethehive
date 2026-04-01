@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Footer from "../components/footer";
 import { socialMetadata } from "../../lib/socialMetadata";
 
@@ -40,8 +41,25 @@ export default function BecomeACitizen() {
               sessions, and the chance to grow alongside others who share the
               same passion and drive.
             </p>
+            <p className="become-a-citizen__hero__inner__subtitle">
+              Want to work with the team?{" "}
+              <Link
+                href="/join-the-hive"
+                className="become-a-citizen__hero__inner__cta"
+              >
+                Apply on Join The Hive
+              </Link>
+              .
+            </p>
             <br />
-                      <a href="https://linktr.ee/Insidethehivepod" target="__blank" className="become-a-citizen__hero__inner__button">Join us</a>
+            <a
+              href="https://linktr.ee/Insidethehivepod"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="become-a-citizen__hero__inner__button"
+            >
+              Join us
+            </a>
 
           </div>
         </div>
