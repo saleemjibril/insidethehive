@@ -22,10 +22,12 @@ export async function generateMetadata() {
   const title = "Home";
   const description =
     "The first Web3 media hub sharing stories + education on Web3 & Gaming. Trusted by builders, founders, and ecosystems shaping African Web3 ecosystem.";
+  const shareTitle =
+    process.env.NEXT_PUBLIC_SITE_NAME || "Inside The Hive";
   return {
     title,
     description,
-    ...socialMetadata("/", { title, description }),
+    ...socialMetadata("/", { title: shareTitle, description }),
   };
 }
 
