@@ -11,7 +11,7 @@ export const sendEmail = async (templateParams) => {
 
   try {
     const result = await emailjs.send(
-      "service_vc9igpo",
+      "service_dgb98ih",
       "template_2obs0wo",
       templateParams
     );
