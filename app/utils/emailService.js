@@ -12,7 +12,7 @@ export const sendEmail = async (templateParams) => {
   try {
     const result = await emailjs.send(
       "service_dgb98ih",
-      "template_2obs0wo",
+      "template_2jtygxm",
       templateParams
     );
     console.log("Email sent successfully", result.text);
