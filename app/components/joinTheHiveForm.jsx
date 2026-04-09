@@ -13,6 +13,7 @@ const POSITIONS = [
   { id: "community_manager", label: "Community Manager" },
   { id: "youtube_handler", label: "YouTube Handler" },
   { id: "content_writer", label: "Content Writer" },
+  { id: "video_content_creator", label: "Video Content Creator" },
 ];
 
 export default function JoinTheHiveForm() {
