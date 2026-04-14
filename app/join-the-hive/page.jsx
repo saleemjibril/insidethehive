@@ -1,11 +1,10 @@
 import Footer from "../components/footer";
-import JoinTheHiveForm from "../components/joinTheHiveForm";
 import { socialMetadata } from "../../lib/socialMetadata";
 
 export async function generateMetadata() {
   const title = "Join The Hive";
   const description =
-    "Apply to join the Inside The Hive team—design, social, community, content, and more.";
+    "Join The Hive applications are currently closed. Check back soon for the next opening.";
   return {
     title,
     description,
@@ -22,10 +21,14 @@ export default function JoinTheHivePage() {
             Join <span>The Hive</span>
           </h1>
           <p className="join-hive__intro">
-            Tell us who you are and which roles fit you. We review every application
-            and reply by email.
+            Applications are currently <strong>closed</strong>.
           </p>
-          <JoinTheHiveForm />
+          <div className="join-hive__status" role="status" aria-live="polite">
+            <p>
+              We open new spots periodically. Please check back soon for the next
+              opportunity to apply.
+            </p>
+          </div>
         </div>
       </div>
       <Footer />
