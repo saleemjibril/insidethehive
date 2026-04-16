@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { sendEmail } from "../utils/emailService";
+import { logEngageSubmission } from "../utils/logFormSubmission";
 import { toast } from "react-toastify";
 
 export default function Engage() {
@@ -15,12 +16,13 @@ export default function Engage() {
         console.log(comment);
         setLoading(true);
         try {
-            const response = await sendEmail({
+            await sendEmail({
                 from_name: "An anoymous listener",
                 message: comment,
                 reply_to: "insidethehivepod@gmail.com",
                 email: "insidethehivepod@gmail.com",
               });
+            logEngageSubmission({ message: comment });
             setComment(""); 
             toast.success("Thank you for reaching out! We'll be in touch soon.", {
                 style: {

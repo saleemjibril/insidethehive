@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "sheet:import-mbox": "node scripts/import-mbox-to-sheets.mjs"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -16,8 +17,10 @@
     "@reduxjs/toolkit": "^2.5.0",
     "@vercel/analytics": "^1.6.1",
     "axios": "^1.8.4",
+    "googleapis": "^171.4.0",
     "gsap": "^3.13.0",
     "jwt-decode": "^3.1.2",
+    "mailparser": "^3.9.8",
     "next": "^16.1.6",
     "puppeteer": "^24.25.0",
     "react": "^19.2.4",
@@ -31,5 +34,8 @@
     "redux": "^5.0.1",
     "rss-parser": "^3.13.0",
     "sass": "^1.83.4"
+  },
+  "devDependencies": {
+    "dotenv": "^17.4.2"
   }
 }

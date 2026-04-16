@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { sendJoinTheHiveApplication } from "../utils/emailService";
+import { logJoinTheHiveSubmission } from "../utils/logFormSubmission";
 import Link from "next/link";
 
 const POSITIONS = [
@@ -51,7 +52,7 @@ export default function JoinTheHiveForm() {
 
     setLoading(true);
     try {
-      await sendJoinTheHiveApplication({
+      const payload = {
         name: data.name,
         nickname: data.nickname,
         email: data.email,
@@ -60,7 +61,9 @@ export default function JoinTheHiveForm() {
         xUsername: data.xUsername.trim(),
         tgUsername: data.tgUsername.trim(),
         powLink: data.powLink.trim(),
-      });
+      };
+      await sendJoinTheHiveApplication(payload);
+      logJoinTheHiveSubmission(payload);
       reset();
       toast.success("Application sent. We’ll be in touch soon.", {
         style: {
