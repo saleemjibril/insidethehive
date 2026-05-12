@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { EVENTS } from "../../lib/eventsData";
 
 // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -109,6 +110,13 @@ const SkeletonLoader = () => {
     );
 };
 
+const eventSlideshowImages = EVENTS.flatMap((event) =>
+    event.galleryImages.map((image) => ({
+        ...image,
+        eventTitle: event.title,
+    }))
+);
+
 export default function LatestEpisode({
     clientId,
     clientSecret,
@@ -120,6 +128,7 @@ export default function LatestEpisode({
     const titleRef = useRef(null);
     const subtitleRef = useRef(null);
     const iconsRef = useRef(null);
+    const eventSlideshowRef = useRef(null);
     const cardRef = useRef(null);
 
     // Spotify API state
@@ -127,6 +136,7 @@ export default function LatestEpisode({
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [token, setToken] = useState('');
+    const [activeEventImageIndex, setActiveEventImageIndex] = useState(0);
 
     // Get Spotify Access Token
     useEffect(() => {
@@ -165,6 +175,18 @@ export default function LatestEpisode({
 
         fetchLatestEpisode();
     }, [token, showId]);
+
+    useEffect(() => {
+        if (eventSlideshowImages.length <= 1) return undefined;
+
+        const interval = setInterval(() => {
+            setActiveEventImageIndex((currentIndex) =>
+                (currentIndex + 1) % eventSlideshowImages.length
+            );
+        }, 4000);
+
+        return () => clearInterval(interval);
+    }, []);
 
     const fetchLatestEpisode = async () => {
         try {
@@ -227,6 +249,7 @@ export default function LatestEpisode({
         const title = titleRef.current;
         const subtitle = subtitleRef.current;
         const icons = iconsRef.current;
+        const eventSlideshow = eventSlideshowRef.current;
         const card = cardRef.current;
 
         // Set initial states
@@ -235,6 +258,7 @@ export default function LatestEpisode({
         gsap.set(title, { opacity: 0, y: 50, scale: 0.9 });
         gsap.set(subtitle, { opacity: 0, y: 30 });
         gsap.set(icons, { opacity: 0, y: 40 });
+        gsap.set(eventSlideshow, { opacity: 0, y: 40, scale: 0.96 });
         gsap.set(card, { opacity: 0, y: 60, scale: 0.95 });
 
         // Create main timeline
@@ -293,6 +317,14 @@ export default function LatestEpisode({
             duration: 0.6,
             ease: "power2.out"
         }, "-=0.2");
+
+        tl.to(eventSlideshow, {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.7,
+            ease: "power2.out"
+        }, "-=0.3");
 
         tl.to(card, {
             opacity: 1,
@@ -372,6 +404,20 @@ export default function LatestEpisode({
             decorativeIconsRef.current.push(el);
         }
     };
+
+    const showPreviousEventImage = () => {
+        setActiveEventImageIndex((currentIndex) =>
+            currentIndex === 0 ? eventSlideshowImages.length - 1 : currentIndex - 1
+        );
+    };
+
+    const showNextEventImage = () => {
+        setActiveEventImageIndex((currentIndex) =>
+            (currentIndex + 1) % eventSlideshowImages.length
+        );
+    };
+
+    const activeEventImage = eventSlideshowImages[activeEventImageIndex];
 
     return (
         <div className="latest-episode" id="latest" ref={containerRef}>
@@ -460,6 +506,58 @@ export default function LatestEpisode({
                     }}
                 />
             </div>
+
+            {activeEventImage ? (
+                <div className="latest-episode__event-slideshow" ref={eventSlideshowRef}>
+                    <div className="latest-episode__event-slideshow__image">
+                        <Image
+                            key={activeEventImage.src}
+                            src={activeEventImage.src}
+                            alt={activeEventImage.alt}
+                            fill
+                            sizes="(max-width: 768px) 92vw, 960px"
+                            className="latest-episode__event-slideshow__img"
+                        />
+                        <div className="latest-episode__event-slideshow__overlay">
+                            <span>{activeEventImage.eventTitle}</span>
+                            <strong>Event Highlights</strong>
+                        </div>
+                    </div>
+
+                    {eventSlideshowImages.length > 1 ? (
+                        <>
+                            <button
+                                type="button"
+                                className="latest-episode__event-slideshow__nav latest-episode__event-slideshow__nav--prev"
+                                onClick={showPreviousEventImage}
+                                aria-label="Show previous event image"
+                            >
+                                &lsaquo;
+                            </button>
+                            <button
+                                type="button"
+                                className="latest-episode__event-slideshow__nav latest-episode__event-slideshow__nav--next"
+                                onClick={showNextEventImage}
+                                aria-label="Show next event image"
+                            >
+                                &rsaquo;
+                            </button>
+                            <div className="latest-episode__event-slideshow__dots" aria-label="Event slideshow images">
+                                {eventSlideshowImages.map((image, index) => (
+                                    <button
+                                        key={`${image.src}-${index}`}
+                                        type="button"
+                                        className={`latest-episode__event-slideshow__dot${index === activeEventImageIndex ? " latest-episode__event-slideshow__dot--active" : ""}`}
+                                        onClick={() => setActiveEventImageIndex(index)}
+                                        aria-label={`Show event image ${index + 1}`}
+                                        aria-current={index === activeEventImageIndex ? "true" : undefined}
+                                    />
+                                ))}
+                            </div>
+                        </>
+                    ) : null}
+                </div>
+            ) : null}
 
             <div className="latest-episode__card" ref={cardRef}>
                 {loading ? (
