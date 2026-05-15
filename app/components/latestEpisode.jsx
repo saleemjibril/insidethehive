@@ -110,12 +110,25 @@ const SkeletonLoader = () => {
     );
 };
 
-const eventSlideshowImages = EVENTS.flatMap((event) =>
-    event.galleryImages.map((image) => ({
-        ...image,
-        eventTitle: event.title,
-    }))
-);
+/** Round-robin merge so slides alternate across events instead of one full gallery then the next. */
+function interleaveEventGalleryImages(events) {
+    const perEvent = events.map((event) =>
+        (event.galleryImages || []).map((image) => ({
+            ...image,
+            eventTitle: event.title,
+        }))
+    );
+    const maxLen = perEvent.reduce((m, arr) => Math.max(m, arr.length), 0);
+    const out = [];
+    for (let i = 0; i < maxLen; i++) {
+        for (let e = 0; e < perEvent.length; e++) {
+            if (perEvent[e][i]) out.push(perEvent[e][i]);
+        }
+    }
+    return out;
+}
+
+const eventSlideshowImages = interleaveEventGalleryImages(EVENTS);
 
 export default function LatestEpisode({
     clientId,
