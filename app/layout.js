@@ -107,9 +107,9 @@ export default function RootLayout({ children }) {
       <body>
             <CryptoPriceTicker />
 
-        <Header />
+        {/* <Header /> */}
         <Toast />
-        <ScrollToTop />
+        {/* <ScrollToTop /> */}
 
         <ReduxProvider>{children}</ReduxProvider>
       <Analytics />
