@@ -18,7 +18,7 @@ const CryptoPriceTicker = ({
   const fetchCryptoPrices = async () => {
     try {
       const response = await getCryptoPrices();
-    console.log("getCryptoPrices", response);
+    // console.log("getCryptoPrices", response);
 
       // Handle the new response structure
       if (response.error) {

@@ -2,7 +2,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Footer from "../../components/footer";
 import EventGalleryLightbox from "../../components/eventGalleryLightbox";
-import { EVENTS, getEventBySlug } from "../../../lib/eventsData";
+import {
+  EVENTS,
+  getEventBySlug,
+  getEventImageForShare,
+  getEventMediaPoster,
+  isEventMediaVideo,
+} from "../../../lib/eventsData";
 import { socialMetadata } from "../../../lib/socialMetadata";
 
 export function generateStaticParams() {
@@ -15,9 +21,14 @@ export async function generateMetadata({ params }) {
   if (!event) return { title: "Event" };
   const title = `${event.title} — Events`;
   const description = event.description;
-  const first = event.galleryImages?.[0];
-  const images = first
-    ? [{ url: first.src, width: 1200, height: 630, alt: first.alt || title }]
+  const firstImage = getEventImageForShare(event);
+  const firstMedia = event.galleryImages?.[0];
+  const shareSrc = firstImage?.src
+    || (firstMedia && isEventMediaVideo(firstMedia)
+      ? getEventMediaPoster(firstMedia)
+      : firstMedia?.src);
+  const images = shareSrc
+    ? [{ url: shareSrc, width: 1200, height: 630, alt: firstImage?.alt || firstMedia?.alt || title }]
     : undefined;
   return {
     title,

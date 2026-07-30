@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { EVENTS } from "../../lib/eventsData";
+import { EVENTS, isEventMediaVideo } from "../../lib/eventsData";
 
 // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -113,10 +113,12 @@ const SkeletonLoader = () => {
 /** Round-robin merge so slides alternate across events instead of one full gallery then the next. */
 function interleaveEventGalleryImages(events) {
     const perEvent = events.map((event) =>
-        (event.galleryImages || []).map((image) => ({
-            ...image,
-            eventTitle: event.title,
-        }))
+        (event.galleryImages || [])
+            .filter((image) => !isEventMediaVideo(image))
+            .map((image) => ({
+                ...image,
+                eventTitle: event.title,
+            }))
     );
     const maxLen = perEvent.reduce((m, arr) => Math.max(m, arr.length), 0);
     const out = [];
