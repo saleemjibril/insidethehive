@@ -8,7 +8,7 @@ export default function Footer() {
                     <Image src="/assets/inside_the_hive.png" width={150} height={150} alt="Inside The Hive Logo" />
 
                     <div className="footer__inner__title-group__social-group">
-                        <a href="mailto:contact@insidedhive.com" target="_blank" rel="noopener noreferrer">
+                        <a href="mailto:insidethehivepod@gmail.com" target="_blank" rel="noopener noreferrer">
                             <Image src="/assets/icons/email.svg" width={32} height={32} alt="Email" />
                         </a>
                         {/* <a href="https://linkedin.com/company/insidedhive" target="_blank" rel="noopener noreferrer">
